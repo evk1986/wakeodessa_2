@@ -1,0 +1,276 @@
+.nav a {
+    color: white;
+    font-size: 17px;
+    padding: 14px 10px;
+}
+
+.nav li {
+    display: inline;
+}
+
+.header-video {
+    position: relative;
+    padding-bottom: 56.25%;
+   
+    max-width: 100%;
+    height: 45%;
+    z-index: 1;
+}
+
+video {
+    object-fit: contain;
+}
+
+footer {
+    width: 100%;
+    height: 300px;
+    background-color: #2B2D2E;
+    display: block;
+    padding: 50px 0;
+    margin-top: 30px;
+}
+
+.va-middle .dropdown button {
+    border-radius: 0px;
+    width: 14%;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    
+    font-size: 13px;
+    text-decoration-color: black;
+}
+
+@media all and (max-width: 630px) {
+    body .header-video .va-middle p {
+        visibility: hidden;
+    }
+    #howBtn {
+        visibility: hidden;
+    }
+    #searchBar {
+        visibility: hidden;
+        z-index: 100;
+    }
+    /* #modileSearchBar h5 {
+    visibility: visible;
+  }
+*/
+    /* #mobileSearchBar{
+ visibility: visible;
+ 
+    
+  }*/
+    .va-middle h6 {
+        visibility: hidden;
+    }
+    body .header-video .va-middle h1 {
+        margin: 0 auto;
+        vertical-align: middle;
+        text-align: center;
+        
+        font-size: 27px;
+        font-weight: normal;
+        color: white;
+        display: block;
+        float: left;
+        padding-left: 15%;
+        padding-top: 15%;
+        margin-left: auto;
+    }
+}
+
+#mobileSearchBar {
+    width: 80%;
+    height: 10%;
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+
+
+.header-video .container {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    z-index: 100;
+}
+
+.va-middle {
+    vertical-align: middle;
+    text-align: center;
+    width: 853px;
+    display: table-cell;
+    height: 436px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    font-family: sans-serif;
+    padding-top: 60px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+.langPanel {
+    width: 80%;
+    height: 117px;
+    margin: 0 auto;
+}
+
+.about {
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+
+/*.nav_bar{
+  height: 10%
+  max-width:250px;
+  }*/
+
+#howBtn {
+    margin: 0 auto;
+    vertical-align: middle;
+    margin-top: 50px;
+    background-color: white;
+    opacity: 0.5;
+    /*  border: 1px solid;*/
+}
+
+.va-middle h1 {
+    margin: 0 auto;
+    text-align: center;
+    
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+    display: block;
+}
+
+.langPanel ul li {
+    color: white;
+    
+}
+
+.va-middle h6 {
+    vertical-align: center;
+    text-align: center;
+   
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: bold;
+}
+
+.learn-more {
+    background-color: #f7f7f7;
+}
+
+.box {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    background-color: yellow;
+}
+
+.learn-more h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-more a {
+    color: #ffffff;
+    font-size: 60px;
+}
+
+.neighborhood-guides {
+    background-color: #efefef;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.neighborhood-guides h2 {
+    color: #393c3d;
+    font-size: 24px;
+}
+
+.neighborhood-guides p {
+    font-size: 15px;
+    margin-bottom: 13px;
+}
+
+footer .col-md-2 {
+    background-color: yellow;
+}
+
+footer .col-md-8 {
+    background-color: white;
+}
+
+
+
+.img-desc {
+    color: #ffffff;
+    width: inherit;
+   
+    background-color: rgba(35, 35, 35, 0.74);
+    position: absolute;
+    top: 0%;
+    vertical-align: middle;
+    left: 0;
+    bottom: -20px;
+    padding:10px;
+    opacity: 0;
+    font-family: sans-serif;
+   /* font-weight: 500;*/
+    box-sizing: border-box;
+    transition: bottom 0.3s, opacity 0.8s;
+}
+.block:hover .img-desc {
+    opacity: 1;
+    bottom: 0px;
+}
+
+.block {
+    display: inline-block;
+    position: relative;
+    width: 340px;
+    height: 340px;
+    overflow: hidden;
+}
+
+.team-container {
+
+    
+}
+
+
+
+#copyright {
+    color: aliceblue;
+    text-decoration-color: aliceblue;
+}
+
+#2 {
+    display: inline
+}
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Registration form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</head>
+<body>
+<!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
+<!--/*@thymesVar id="brands" type="com.kravchenko.wakeodessa.domains.Brands"*/-->
+
+<form class="form-horizontal" th:object="${product}" th:action="@{/admin/addProduct}"
+      enctype="multipart/form-data" method="post">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Add new product to storage</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="model">Product model</label>
+            <div class="col-md-4">
+                <input id="model" name="Model" type="text"
+                       placeholder="model" class="form-control input-md" required=""
+                       th:field="*{productName}"/>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="category">Category</label>
+            <div class="col-md-4">
+                <select id="category" th:field="*{category}">
+                    <option th:each="categories : ${T(com.kravchenko.wakeodessa.domains.Categori).values}"
+                            th:value="${categories}"
+                            th:text="${categories.getDisplayedName()}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="brand">Brand </label>
+            <div class="col-md-4">
+                <select id="brand" th:field="*{brand}">
+                    <option th:each="maBrand : ${brands.brands}"
+                            th:value="${maBrand.getBrand_id()}"
+                            th:text="${maBrand.brandName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="price">Price</label>
+            <div class="col-md-4">
+                <input id="price" name="price" type="text" placeholder="$"
+                       class="form-control input-md" required=""
+                       th:field="*{price}"
+                />
+
+            </div>
+        </div>
+
+        <!-- File Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="imageUpload">Image</label>
+            <div class="col-md-4">
+                <input id="imageUpload" name="imageUpload" class="input-file" type="file"/>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ok"></label>
+            <div class="col-md-8">
+                <!--<button id="ok" name="ok" class="btn btn-success">Save</button>-->
+                <input id="ok" type="submit" value="Save" class="btn btn-info btn-success"/>
+                <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
+<table class="table table-striped" th:object="${products}" th:if="${products != null}">
+    <tr th:each="maBrand : ${products}">
+        <td th:text="${maBrand.getProductName()}">Name</td>
+        <td th:text="${maBrand.getCategory()}">Category</td>
+        <td th:text="${maBrand.getPrice()}">Price</td>
+        <td><p><img th:src="@{'/admin/addProduct/image/'+${maBrand.getProduct_id()}}"/></p></td>
+    </tr>
+
+
+</table>
+
+</body>
+</html>

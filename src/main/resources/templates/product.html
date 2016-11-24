@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/shop-item.css}"
+          href="/css/shop-item.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+    <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WOC HOME</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
+<div class="container" th:object="${product}">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Shop Name</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item"
+                   th:each="categories : ${T(com.kravchenko.wakeodessa.domains.Categori).values}"
+                   th:value="${categories}"
+                   th:text="${categories.getDisplayedName()}"></a>
+
+            </div>
+        </div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{http://localhost:8080/shop/main/}">Home</a></li>
+            <li class="breadcrumb-item active" th:text="${product.getProductName()}"></li>
+        </ol>
+
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <div class="col-sm-7 col-lg-7 col-md-7">
+                    <img class="thumbnail" th:src="@{'/shop/main/get_product_image/image/'+${product.getProduct_id()}}"
+                         alt=""/>
+                </div>
+                <div class="caption-full">
+                    <button class="btn btn-success btn-lg btn-add-to-card pull-right"><span
+                            class="glyphicon glyphicon-shopping-cart">   Buy</span></button>
+                    <h4 th:text="'Model: ' + ${product.getProductName()}"
+                        style="color:#2aabd2;  font-weight: bold;"></h4>
+                    <h4 th:class="center-block" style="font-style: italic; color: #2aabd2"
+                        th:text="'Price: ' + ${product.getPrice()} + ' $'"
+                        class="pull-right"></h4>
+
+                    <p style="font-weight: normal; font-style: italic; " th:text="${product.getInfo()}"></p>
+                    <table class="data-table" id="product-attribute-specs-table">
+                        <colgroup>
+                            <col width="25%"/>
+                        </colgroup>
+                        <tbody>
+                        <tr class="first odd">
+                            <th>SKU</th>
+                            <td>172404PARKSIB</td>
+                        </tr>
+                        <tr class="even">
+                            <th>Brand</th>
+                            <td>Ronix</td>
+                        </tr>
+                        <tr class="odd">
+                            <th>Gender</th>
+                            <td>Men's</td>
+                        </tr>
+                        <tr class="even">
+                            <th>Model Year</th>
+                            <td>2017</td>
+                        </tr>
+                        <tr class="odd">
+                            <th>Ability</th>
+                            <td>Advanced-Expert</td>
+                        </tr>
+                        <tr class="even">
+                            <th>Base</th>
+                            <td>Standard</td>
+                        </tr>
+                        <tr class="odd">
+                            <th>Wakeboard Flex</th>
+                            <td>Traditional</td>
+                        </tr>
+                        <tr class="even">
+                            <th>Rocker</th>
+                            <td>Camber</td>
+                        </tr>
+                        <tr class="last odd">
+                            <th>Type</th>
+                            <td>Boat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ratings">
+                    <p class="pull-right">3 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>

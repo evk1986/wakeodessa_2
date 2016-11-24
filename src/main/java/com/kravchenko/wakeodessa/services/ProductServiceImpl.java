@@ -19,10 +19,19 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
+
     @Override
     public Product find(Integer imageId) {
         return repository.findOne(imageId);
     }
 
+    @Override
+    public Product save(Product product) {
+        return repository.save(product);
+    }
 
+    @Override
+    public void delete(Integer id) {
+        repository.delete(id);
+    }
 }

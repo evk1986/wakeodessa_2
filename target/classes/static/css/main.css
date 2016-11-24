@@ -93,7 +93,9 @@ footer {
 }
 
 
-
+.mybtn{
+    background:#404040
+}
 .header-video .container {
     position: absolute;
     margin: auto;

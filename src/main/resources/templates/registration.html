@@ -8,6 +8,9 @@
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link href="/css/main.css"
+          th:href="@{/css/main.css}"
+          rel="stylesheet" media="screen"/>
 </head>
 <body>
 <div class="container">
@@ -21,7 +24,8 @@
                 </div>
                 <div class="panel-body">
                     <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
-                    <form  action="registration" name="user" th:action="@{/registration.html}" th:object="${user}" method="post">
+                    <form action="registration" name="user" th:action="@{/registration.html}" th:object="${user}"
+                          method="post">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -47,11 +51,12 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <input type="password" name="password_confirmation" id="password_confirmation"
-                                           class="form-control input-sm" placeholder="Confirm Password" th:field="*{confPassword}"/>
+                                           class="form-control input-sm" placeholder="Confirm Password"
+                                           th:field="*{confPassword}"/>
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" value="Register" class="btn btn-info btn-block"/>
+                        <input type="submit" value="Register" class="btn btn-info btn-block mybtn"/>
 
                     </form>
                 </div>

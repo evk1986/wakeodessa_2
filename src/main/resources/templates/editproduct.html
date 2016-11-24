@@ -16,20 +16,18 @@
 <body>
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 <!--/*@thymesVar id="brands" type="com.kravchenko.wakeodessa.domains.Brands"*/-->
-
-<form class="form-horizontal" th:object="${product}" th:action="@{/admin/addProduct}"
+<form class="form-horizontal" th:object="${product}" th:action="@{'/admin/addProduct/edit/'+${product.getProduct_id()}}"
       enctype="multipart/form-data" method="post">
     <fieldset>
         <!-- Form Name -->
-        <legend>Add new product to storage</legend>
-
+        <legend>Edit product</legend>
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="model">Product model</label>
             <div class="col-md-4">
                 <input id="model" name="Model" type="text"
                        placeholder="model" class="form-control input-md" required=""
-                       th:field="*{productName}"/>
+                       th:field="*{productName}" th:value="${product.getProductName()}" th:valuetype="text"/>
             </div>
         </div>
         <!-- Select Basic -->
@@ -44,7 +42,6 @@
                 </select>
             </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="brand">Brand </label>
@@ -57,24 +54,27 @@
                 </select>
             </div>
         </div>
-
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="price">Price</label>
             <div class="col-md-4">
                 <input id="price" name="price" type="text" placeholder="$"
                        class="form-control input-md" required=""
-                       th:field="*{price}"
+                       th:field="*{price}" th:value="${product.getPrice()+'$'}"
                 />
-
             </div>
         </div>
-
         <!-- File Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="imageUpload">Image</label>
             <div class="col-md-4">
-                <input id="imageUpload" name="imageUpload" class="input-file" type="file"/>
+                <input th:value="*{image}"
+                       th:field="*{image}"
+                       accept="image/*"
+                       onchange=""
+                       id="imageUpload" name="image" type="file"
+                />
+                <p><img id="thumbnil" th:src="@{'/image/'+${product.getProduct_id()}}"/></p>
             </div>
         </div>
         <div class="form-group">
@@ -84,7 +84,6 @@
                           class="form-control" id="info" name="info"></textarea>
             </div>
         </div>
-
         <!-- Button (Double) -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="ok"></label>
@@ -94,41 +93,7 @@
                 <button id="cancel" name="cancel" class="mybtn btn btn-danger">Cancel</button>
             </div>
         </div>
-
     </fieldset>
 </form>
-<!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
-<table class="table table-striped" th:object="${products}" th:if="${products != null}">
-    <tr th:each="maProduct : ${products}">
-        <td style="font-weight: bold;" th:text="${maProduct.getProductName()}">Name</td>
-        <td th:text="${maProduct.getCategory()}">Category</td>
-        <td th:text="${maProduct.getBrand()}">Brand</td>
-        <td th:text="${maProduct.getInfo()}">Information about product</td>
-        <td style="font-weight: bold;" th:text="${maProduct.getPrice()}+'$'">Price</td>
-        <td><p><img class="img-rounded" style="width: 100px; height: auto"
-                    th:src="@{'/admin/addProduct/image/'+${maProduct.getProduct_id()}}"/></p></td>
-        <td>
-            <form id="edit_form" name="edit_form" th:action="@{'/admin/addProduct/edit/'+${maProduct.getProduct_id()}}"
-                  method="get">
-                <div class="text-center pull-left">
-                    <button class="btn btn-primary btn-lg mybtn" id="edit">Edit</button>
-                </div>
-            </form>
-        </td>
-        <td>
-            <form id="deleteForm" name="delete" th:action="@{'/admin/addProduct/delete/'+${maProduct.getProduct_id()}}"
-                  method="get">
-                <div class="text-center pull-left">
-                    <button type="submit" class="btn btn-danger btn-lg mybtn">Delete</button>
-                </div>
-            </form>
-
-
-        </td>
-    </tr>
-
-
-</table>
-
 </body>
 </html>

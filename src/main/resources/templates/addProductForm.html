@@ -9,6 +9,9 @@
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link href="/css/main.css"
+          th:href="@{/css/main.css}"
+          rel="stylesheet" media="screen"/>
 </head>
 <body>
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
@@ -74,14 +77,21 @@
                 <input id="imageUpload" name="imageUpload" class="input-file" type="file"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="info">Product info</label>
+            <div class="col-md-4">
+                <textarea th:rows="10" th:field="*{info}"
+                          class="form-control" id="info" name="info"></textarea>
+            </div>
+        </div>
 
         <!-- Button (Double) -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="ok"></label>
             <div class="col-md-8">
                 <!--<button id="ok" name="ok" class="btn btn-success">Save</button>-->
-                <input id="ok" type="submit" value="Save" class="btn btn-info btn-success"/>
-                <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+                <input id="ok" type="submit" value="Save" class="mybtn btn btn-info btn-success"/>
+                <button id="cancel" name="cancel" class="mybtn btn btn-danger">Cancel</button>
             </div>
         </div>
 
@@ -89,11 +99,32 @@
 </form>
 <!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
 <table class="table table-striped" th:object="${products}" th:if="${products != null}">
-    <tr th:each="maBrand : ${products}">
-        <td th:text="${maBrand.getProductName()}">Name</td>
-        <td th:text="${maBrand.getCategory()}">Category</td>
-        <td th:text="${maBrand.getPrice()}">Price</td>
-        <td><p><img th:src="@{'/admin/addProduct/image/'+${maBrand.getProduct_id()}}"/></p></td>
+    <tr th:each="maProduct : ${products}">
+        <td style="font-weight: bold;" th:text="${maProduct.getProductName()}">Name</td>
+        <td th:text="${maProduct.getCategory()}">Category</td>
+        <td th:text="${maProduct.getBrand()}">Brand</td>
+        <td th:text="${maProduct.getInfo()}">Information about product</td>
+        <td style="font-weight: bold;" th:text="${maProduct.getPrice()}+'$'">Price</td>
+        <td><p><img class="img-rounded" style="width: 100px; height: auto"
+                    th:src="@{'/admin/addProduct/image/'+${maProduct.getProduct_id()}}"/></p></td>
+        <td>
+            <form id="edit_form" name="edit_form" th:action="@{'/admin/addProduct/edit/'+${maProduct.getProduct_id()}}"
+                  method="get">
+                <div class="text-center pull-left">
+                    <button class="btn btn-primary btn-lg mybtn" id="edit">Edit</button>
+                </div>
+            </form>
+        </td>
+        <td>
+            <form id="deleteForm" name="delete" th:action="@{'/admin/addProduct/delete/'+${maProduct.getProduct_id()}}"
+                  method="get">
+                <div class="text-center pull-left">
+                    <button type="submit" class="btn btn-danger btn-lg mybtn">Delete</button>
+                </div>
+            </form>
+
+
+        </td>
     </tr>
 
 

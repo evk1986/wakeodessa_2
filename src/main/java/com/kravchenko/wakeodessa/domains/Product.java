@@ -32,6 +32,16 @@ public class Product {
     @Column(length = 65535)
     private byte[] image;
 
+    @Column(length = 1048)
+    private String info;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
 
     public String getPrice() {

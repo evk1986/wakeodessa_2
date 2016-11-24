@@ -12,5 +12,9 @@ public interface ProductService {
     Product add(Product product);
     @Transactional
     Product find(Integer imageId);
+@Transactional
+    Product save(Product product);
 
+    @Transactional
+    void delete(Integer id);
 }

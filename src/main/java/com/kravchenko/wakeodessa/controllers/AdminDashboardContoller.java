@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminDashboard {
+public class AdminDashboardContoller {
 
     @RequestMapping(value = "/admin-dashboard",method = RequestMethod.GET)
     public String getAdminDashboard(Model uiModel) throws IOException {

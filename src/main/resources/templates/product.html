@@ -84,8 +84,18 @@
                          alt=""/>
                 </div>
                 <div class="caption-full">
-                    <button class="btn btn-success btn-lg btn-add-to-card pull-right"><span
-                            class="glyphicon glyphicon-shopping-cart">   Buy</span></button>
+                    <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
+                    <th:block th:if="${user}!=null">
+                        <form id="edit_form" name="edit_form"
+                              th:action="@{'/shop/main/'+${user.getId()}+ '/order?productId=' + ${product.getProduct_id()}}"
+                              method="post">
+                            <button class="btn btn-success btn-lg btn-add-to-card pull-right"><span
+                                    class="glyphicon glyphicon-shopping-cart">   Buy</span>
+                            </button>
+                        </form>
+                    </th:block>
+
+
                     <h4 th:text="'Model: ' + ${product.getProductName()}"
                         style="color:#2aabd2;  font-weight: bold;"></h4>
                     <h4 th:class="center-block" style="font-style: italic; color: #2aabd2"

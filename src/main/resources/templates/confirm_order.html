@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/shop-item.css}"
+          href="/css/shop-item.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Order</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="name">Full Name</label>
+                    <div class="col-md-4">
+                        <input id="name" name="name" type="text" placeholder="Full Name" class="form-control input-md"
+                               required="true"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="mobile">Mobile</label>
+                    <div class="col-md-4">
+                        <input id="mobile" name="mobile" type="text" placeholder="Mobile No"
+                               class="form-control input-md" required="true"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="alt">Alternate Mobile</label>
+                    <div class="col-md-4">
+                        <input id="alt" name="alt" type="text" placeholder="alternate mobile no."
+                               class="form-control input-md"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="adress">Alternate Mobile</label>
+                    <div class="col-md-4">
+                        <input id="adress" name="adress" type="text" placeholder="adress"
+                               class="form-control input-md"/>
+                    </div>
+                </div>
+
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebuttonsubmit"></label>
+                    <div class="col-md-4">
+                        <button id="singlebuttonsubmit" name="singlebuttonsubmit" class="btn btn-primary">Buy</button>
+                        <button id="singlebuttoncancel" name="singlebuttoncancel" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+</body>
+</html>

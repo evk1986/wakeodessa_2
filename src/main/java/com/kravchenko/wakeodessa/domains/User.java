@@ -23,8 +23,20 @@ public class User implements Serializable {
     @Column
     private String role;
 
+    @Column
+    private String name;
+
+
     @OneToMany(mappedBy = "orderId")
     private List<Order> order;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public List<Order> getOrder() {
         return order;

@@ -3,6 +3,7 @@ package com.kravchenko.wakeodessa.domains;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Egor on 25.10.2016.
@@ -14,18 +15,63 @@ public class Order implements Serializable {
     @GeneratedValue
     private int orderId;
 
+
     @Column
     private Date date;
 
-    /*@OneToMany(mappedBy = "order")
-    private List<Product> orderProducts;*/
+
+    @OneToMany(mappedBy = "orderId")
+    private List<OrderContent> orderProducts;
 
     @ManyToOne
     @JoinColumn(name = "login")
     private User user;
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", date=" + date +
+                ", orderProducts=" + orderProducts +
+                ", user=" + user +
+                ", mobile=" + mobile +
+                ", adress='" + adress + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
+
+    @Column
+    private int mobile;
+
+    @Column
+    private String adress;
 
     private String token;
+
+    public List<OrderContent> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderContent> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
+
+    public int getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
 
     public Order() {
     }
@@ -38,6 +84,7 @@ public class Order implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+
     public int getOrderId() {
         return orderId;
     }

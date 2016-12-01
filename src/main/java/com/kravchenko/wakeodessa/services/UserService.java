@@ -8,16 +8,18 @@ import java.util.List;
 
 /**
  * интерфейс описывающий методы для работы с пользователями
- * @author Egor
  *
+ * @author Egor
  */
-public interface UserService extends UserDetailsService{
+public interface UserService extends UserDetailsService {
 
-	@Transactional
-	User add(User user);
+    @Transactional
+    User add(User user);
 
-	User findByLogin(String login);
+    User findByLogin(String login);
 
-	List<User> getAll();
+    User findById(Integer id);
+
+    List<User> getAll();
 
 }

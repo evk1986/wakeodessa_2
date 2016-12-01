@@ -2,6 +2,7 @@ package com.kravchenko.wakeodessa.domains;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Egor on 25.10.2016.
@@ -34,6 +35,17 @@ public class Product {
 
     @Column(length = 1048)
     private String info;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderContent> orderProducts;
+
+    public List<OrderContent> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderContent> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 
     public String getInfo() {
         return info;

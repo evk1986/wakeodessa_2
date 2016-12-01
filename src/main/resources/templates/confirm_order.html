@@ -24,7 +24,14 @@
 <body>
 <div class="container">
     <div class="row">
-        <form class="form-horizontal">
+        <!--/*@thymesVar id="order" type="com.kravchenko.wakeodessa.domains.Order"*/-->
+        <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
+        <!--/*@thymesVar id="productId" type="java.lang.Integer"*/-->
+        <form class="form-horizontal"
+              th:method="post"
+              th:action="@{'/shop/main/'+ ${user.getId()} + '/order/'+${productId}+'/succes'}"
+              th:object="${order}"
+        >
             <fieldset>
                 <!-- Form Name -->
                 <legend>Order</legend>
@@ -33,34 +40,32 @@
                     <label class="col-md-4 control-label" for="name">Full Name</label>
                     <div class="col-md-4">
                         <input id="name" name="name" type="text" placeholder="Full Name" class="form-control input-md"
-                               required="true"/>
+                               required="true" th:field="${user.name}"/>
+
                     </div>
                 </div>
-
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="mobile">Mobile</label>
                     <div class="col-md-4">
                         <input id="mobile" name="mobile" type="text" placeholder="Mobile No"
-                               class="form-control input-md" required="true"/>
+                               class="form-control input-md" required="true" th:field="*{mobile}"/>
                     </div>
                 </div>
-
+                <!-- Text input-->
+                <!-- <div class="form-group">
+                     <label class="col-md-4 control-label" for="alt">Alternate Mobile</label>
+                     <div class="col-md-4">
+                         <input id="alt" name="alt" type="text" placeholder="alternate mobile no."
+                                class="form-control input-md"/>
+                     </div>
+                 </div>-->
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="alt">Alternate Mobile</label>
-                    <div class="col-md-4">
-                        <input id="alt" name="alt" type="text" placeholder="alternate mobile no."
-                               class="form-control input-md"/>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="adress">Alternate Mobile</label>
+                    <label class="col-md-4 control-label" for="adress">Adress</label>
                     <div class="col-md-4">
                         <input id="adress" name="adress" type="text" placeholder="adress"
-                               class="form-control input-md"/>
+                               class="form-control input-md" th:field="*{adress}"/>
                     </div>
                 </div>
 

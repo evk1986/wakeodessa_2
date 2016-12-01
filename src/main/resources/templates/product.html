@@ -73,7 +73,7 @@
             </div>
         </div>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a th:href="@{http://localhost:8080/shop/main/}">Home</a></li>
+            <li class="breadcrumb-item"><a th:href="@{'http://localhost:8080/shop/main/'}">Home</a></li>
             <li class="breadcrumb-item active" th:text="${product.getProductName()}"></li>
         </ol>
 
@@ -88,7 +88,7 @@
                     <th:block th:if="${user}!=null">
                         <form id="edit_form" name="edit_form"
                               th:action="@{'/shop/main/'+${user.getId()}+ '/order?productId=' + ${product.getProduct_id()}}"
-                              method="post">
+                              method="post" th:method="post">
                             <button class="btn btn-success btn-lg btn-add-to-card pull-right"><span
                                     class="glyphicon glyphicon-shopping-cart">   Buy</span>
                             </button>

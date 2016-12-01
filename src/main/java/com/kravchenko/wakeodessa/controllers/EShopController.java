@@ -1,19 +1,25 @@
 package com.kravchenko.wakeodessa.controllers;
 
+import com.kravchenko.wakeodessa.domains.Order;
+import com.kravchenko.wakeodessa.domains.OrderContent;
 import com.kravchenko.wakeodessa.domains.Product;
 import com.kravchenko.wakeodessa.domains.User;
-import com.kravchenko.wakeodessa.services.BrandService;
-import com.kravchenko.wakeodessa.services.ProductService;
-import com.kravchenko.wakeodessa.services.StorageService;
-import com.kravchenko.wakeodessa.services.UserService;
+import com.kravchenko.wakeodessa.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +37,9 @@ public class EShopController {
     StorageService storageService;
     @Autowired
     UserService uds;
+    @Autowired
+    OrderService orderService;
+
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getShopView(Model uiModel) {
@@ -58,18 +67,14 @@ public class EShopController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth.isAuthenticated());
         if (auth.isAuthenticated()) {
-
-            String name = auth.getName(); //get logged in username
+            String name = auth.getName();
             System.out.println(name);
             User user = uds.findByLogin(name);
             uiModel.addAttribute("user", user);
-
             return "product";
         } else {
             return "registration";
         }
-
-
     }
 
 
@@ -77,8 +82,51 @@ public class EShopController {
     public String getOrder(@RequestParam(value = "productId", required = false) Integer productId,
                            @PathVariable(value = "userId") Integer userId,
                            Model uiModel) {
-        System.out.println(productId + " =id " + userId + " userId" );
+        Order order = new Order();
+        uiModel.addAttribute("order", order);
+        System.out.println(productId + " =id " + userId + " userId");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.isAuthenticated());
+        if (auth.isAuthenticated()) {
+
+            String name = auth.getName(); //get logged in username
+            System.out.println(name);
+            User user = uds.findByLogin(name);
+            uiModel.addAttribute("user", user);
+            uiModel.addAttribute("productId", productId);
+
+        }
         return "confirm_order";
+    }
+
+    @RequestMapping(value = "/main/{userId}/order/{productId}/succes", method = RequestMethod.POST)
+    public String postOrder(@PathVariable(value = "userId") Integer userId,
+                            @PathVariable(value = "productId") Integer productId,
+                            @ModelAttribute(value = "order") @Valid Order order,
+                            BindingResult bindingResult,
+                            HttpServletRequest req,
+                            Model uiModel) {
+
+        String name = req.getUserPrincipal().getName();
+        User user = uds.findByLogin(name);
+        if (user.getName() != null) {
+            user.setName(req.getParameter("name"));
+        }
+        OrderContent oc = new OrderContent();
+        Product currentProd = productService.find(productId);
+        oc.setProduct(currentProd);
+        oc.setOrderId(order);
+        List<OrderContent> loc = new ArrayList<OrderContent>();
+        loc.add(oc);
+        order.setOrderProducts(loc);
+        order.setUser(user);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+        order.setDate(date);
+        orderService.save(order);
+        System.out.println(order.toString());
+        return "succes_form";
     }
 
 

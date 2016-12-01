@@ -24,7 +24,7 @@ public class AdminDashboardContoller {
 
         return "admindashboard";
     }
-    @RequestMapping(value = "/admin-dashboard#users",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin-dashboard/users",method = RequestMethod.GET)
     public String getAdminDashboard(Model model) throws IOException {
         model.addAttribute("users", us.getAll());
         return "admindashboard";

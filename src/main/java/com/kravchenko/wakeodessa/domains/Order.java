@@ -12,13 +12,11 @@ import java.util.List;
 @Table(name = "orders")
 public class Order implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
-
 
     @Column
     private Date date;
-
 
     @OneToMany(mappedBy = "orderId")
     private List<OrderContent> orderProducts;

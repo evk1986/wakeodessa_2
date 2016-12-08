@@ -83,7 +83,7 @@ public class EShopController {
                            @PathVariable(value = "userId") Integer userId,
                            Model uiModel) {
         Order order = new Order();
-        uiModel.addAttribute("order", order);
+
         System.out.println(productId + " =id " + userId + " userId");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth.isAuthenticated());
@@ -92,11 +92,15 @@ public class EShopController {
             String name = auth.getName(); //get logged in username
             System.out.println(name);
             User user = uds.findByLogin(name);
+            uiModel.addAttribute("order", order);
             uiModel.addAttribute("user", user);
             uiModel.addAttribute("productId", productId);
+            return "confirm_order";
 
+        } else {
+            return "succes_form";
         }
-        return "confirm_order";
+
     }
 
     @RequestMapping(value = "/main/{userId}/order/{productId}/succes", method = RequestMethod.POST)
@@ -109,23 +113,31 @@ public class EShopController {
 
         String name = req.getUserPrincipal().getName();
         User user = uds.findByLogin(name);
-        if (user.getName() != null) {
+       /* if (user.getName() != null) {
             user.setName(req.getParameter("name"));
-        }
+        }*/
         OrderContent oc = new OrderContent();
         Product currentProd = productService.find(productId);
         oc.setProduct(currentProd);
         oc.setOrderId(order);
         List<OrderContent> loc = new ArrayList<OrderContent>();
         loc.add(oc);
-        order.setOrderProducts(loc);
-        order.setUser(user);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
+
+
+        order.setOrderProducts(loc);
+        order.setUser(user);
         order.setDate(date);
+        System.out.println(order.toString());
+
+
+
+        uds.add(user);
         orderService.save(order);
         System.out.println(order.toString());
+
         return "succes_form";
     }
 

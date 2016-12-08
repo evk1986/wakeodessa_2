@@ -2,7 +2,6 @@ package com.kravchenko.wakeodessa.domains;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Egor on 18.10.2016.
@@ -27,8 +26,8 @@ public class User implements Serializable {
     private String name;
 
 
-    @OneToMany(mappedBy = "orderId")
-    private List<Order> order;
+  /*  @OneToMany(mappedBy = "orderId")
+    private List<Order> order;*/
 
     public String getName() {
         return name;
@@ -37,14 +36,13 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<Order> getOrder() {
+  /*  public List<Order> getOrder() {
         return order;
     }
 
     public void setOrder(List<Order> order) {
         this.order = order;
-    }
+    }*/
 
 
     public String getConfPassword() {

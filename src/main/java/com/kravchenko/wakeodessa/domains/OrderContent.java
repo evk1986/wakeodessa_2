@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "order_content")
-public class OrderContent implements Serializable{
+public class OrderContent implements Serializable {
     public OrderContent() {
     }
 
@@ -16,6 +16,7 @@ public class OrderContent implements Serializable{
     @GeneratedValue
     private int id;
 
+    @ManyToOne
     @JoinColumn(name = "orderId")
     private Order orderId;
 
@@ -23,7 +24,6 @@ public class OrderContent implements Serializable{
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
 
 
     public int getId() {
@@ -50,5 +50,12 @@ public class OrderContent implements Serializable{
         this.orderId = orderId;
     }
 
-
+    @Override
+    public String toString() {
+        return "OrderContent{" +
+                "id=" + id +
+                ", orderId=" + orderId.getOrderId() +
+                ", product=" + product.getProductName() +
+                '}';
+    }
 }

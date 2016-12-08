@@ -39,6 +39,8 @@ public class EShopController {
     UserService uds;
     @Autowired
     OrderService orderService;
+    @Autowired
+    OrderContentServiceImpl orderContentService;
 
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
@@ -113,13 +115,11 @@ public class EShopController {
 
         String name = req.getUserPrincipal().getName();
         User user = uds.findByLogin(name);
-       /* if (user.getName() != null) {
-            user.setName(req.getParameter("name"));
-        }*/
         OrderContent oc = new OrderContent();
         Product currentProd = productService.find(productId);
         oc.setProduct(currentProd);
         oc.setOrderId(order);
+
         List<OrderContent> loc = new ArrayList<OrderContent>();
         loc.add(oc);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -133,9 +133,9 @@ public class EShopController {
         System.out.println(order.toString());
 
 
-
         uds.add(user);
         orderService.save(order);
+        orderContentService.save(oc);
         System.out.println(order.toString());
 
         return "succes_form";

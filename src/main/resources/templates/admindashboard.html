@@ -83,39 +83,7 @@
         </div>
         <section class="content-inner">
             <p class="text-center"><em>Administration dashboard wakeodessacrew website! welcome back! :) </em></p>
-            <!--<div class="col-md-5">
-                <p><em>In the left side of ur screen u can see the navigation bar!.
-                    Wich contains the categories u can administrate.
-                    Have a nice day, and make some money folk! :)</em></p>
-            </div>-->
-
-
             <img src="/img/logo.png" th:src="@{/img/logo.png}" class="center-block"/>
-
-
-            <!--/*@thymesVar id="users" type="java.util.List<com.kravchenko.wakeodessa.domains.User>"*/-->
-            <table class="table table-striped" th:object="${users}">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Login</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.getId()}"></td>
-                    <td th:text="${user.getLogin()}"></td>
-                    <td th:text="${user.getEmail()}"></td>
-                    <td th:text="${user.getPassword()}"></td>
-
-                </tr>
-                </tbody>
-            </table>
-
-
         </section>
     </div>
 

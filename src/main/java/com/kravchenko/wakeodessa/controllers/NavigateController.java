@@ -34,8 +34,12 @@ public class NavigateController {
         return "redirect:index.html";
     }
 
-
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String userLogIn() {
+        return "login";
+    }
 }
+
    /* @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getMainView() {

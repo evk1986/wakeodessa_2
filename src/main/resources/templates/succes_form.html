@@ -16,10 +16,51 @@
 
         <div>
             <ol>
-                <li><span>1.</span><p>Поздравляю</p></li>
-                <li><span>2.</span><p>мы вам перезвоним</p></li>
-                <li><span>3.</span><p>спасибо</p></li>
+                <li><span>1.</span>
+                    <p>Поздравляю</p></li>
+                <li><span>2.</span>
+                    <p>Ваш заказ принят в обработку. В ближайшее время с вами свяжется наш менеджер.</p></li>
+                <li><span>3.</span>
+                    <p>Спасибо. До скорых встречь</p></li>
+
             </ol>
+        </div>
+        <b><span id="time" style="display: none"></span></b>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            /*[+
+             var i = 5;//время в сек.
+             function time(){
+             document.getElementById("time").innerHTML = i;//визуальный счетчик
+             i--;//уменьшение счетчика
+             if (i < 0) location.href = "http://localhost:8080/shop/main";//редирект
+             }
+             time();
+             setInterval(time, 1000);
+             +]*/
+            /*]]>*/
+        </script>
+        <!-- <div "
+          class="block">
+             <div class="loading">
+                 <span class="ball1"></span>
+                 <span class="ball2"></span>
+             </div>
+         </div>-->
+        <div style="
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         margin: auto;"
+             class="preloader" id="preloader">
+            <div class="item">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
         </div>
 
 

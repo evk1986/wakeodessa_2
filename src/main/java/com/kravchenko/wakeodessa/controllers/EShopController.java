@@ -126,12 +126,10 @@ public class EShopController {
         Date date = new Date();
         System.out.println(dateFormat.format(date));
 
-
         order.setOrderProducts(loc);
         order.setUser(user);
         order.setDate(date);
         System.out.println(order.toString());
-
 
         uds.add(user);
         orderService.save(order);

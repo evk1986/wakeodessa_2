@@ -52,6 +52,17 @@ public class EShopController {
         return "main";
     }
 
+    @RequestMapping(value = "/main/{category}", method = RequestMethod.GET)
+    public String sortByCategory(Model model, @PathVariable(value = "category") String category) {
+        System.out.println("im here");
+        List<Product> products = storageService.findByCategory(category);
+        if (products.size() != 0) {
+            System.out.println(products.toString());
+        }
+        model.addAttribute("products", products);
+        return "main";
+    }
+
 
     @ResponseBody()
     @RequestMapping(value = "/main/get_product_image/image/{image_id}")
@@ -131,7 +142,7 @@ public class EShopController {
         order.setDate(date);
         System.out.println(order.toString());
 
-        uds.add(user);
+        uds.save(user);
         orderService.save(order);
         orderContentService.save(oc);
         System.out.println(order.toString());

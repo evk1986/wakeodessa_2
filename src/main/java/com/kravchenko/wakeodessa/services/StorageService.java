@@ -13,6 +13,8 @@ public interface StorageService {
 
     List<Product> findAll();
 
+    List<Product> findByCategory(String category);
+
     Product find(Product product);
 
     void addProductQuantity(Product product, Integer prodQuantity);

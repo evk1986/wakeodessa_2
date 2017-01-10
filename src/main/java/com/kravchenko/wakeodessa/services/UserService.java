@@ -14,12 +14,14 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
 
     @Transactional
-    User add(User user);
+    User save(User user);
 
+    @Transactional
     User findByLogin(String login);
 
     User findById(Integer id);
 
+    @Transactional
     List<User> getAll();
 
 }

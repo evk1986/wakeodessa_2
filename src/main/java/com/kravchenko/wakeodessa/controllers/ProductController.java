@@ -75,7 +75,7 @@ public class ProductController {
 
         System.out.println("testing product " + testingProduct.toString());
         productService.add(testingProduct);
-        //  storageService.add(testingProduct);
+        //  storageService.save(testingProduct);
 
         /*return "redirect:/index.html";*/
         return "redirect:/admin/addProduct";

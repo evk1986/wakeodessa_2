@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Admin dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/admin.css}"
+          href="/css/admin.css"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/pagination.css}"
+          href="/css/pagination.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+    <!--Pagination framework-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
+
+    <!--/*@thymesVar id="users" type="java.util.List<com.kravchenko.wakeodessa.domains.User>"*/-->
+</head>
+<body>
+<div class="wrap">
+    <nav class="nav-bar navbar-inverse" role="navigation">
+        <div id="top-menu" class="container-fluid active">
+            <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
+            <ul class="nav navbar-nav">
+                <form id="qform" class="navbar-form pull-left" role="search">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                </form>
+                <li class="dropdown movable">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
+                            class="fa fa-4x fa-child"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
+                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <aside id="side-menu" class="aside" role="navigation">
+        <ul class="nav nav-list accordion">
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-globe"></i>Portal<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="#" th:href="@{'/admin/addbrand'}">Brands</a></li>
+                    <li><a href="#" th:href="@{'/admin/addProduct'}">Products</a></li>
+                    <li><a href="/admin/admin-dashboard/orders">Orders</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-users" onfocus="true" th:autofocus="true"></i>Users<i
+                        class="fa fa-chevron-down"></i></div>
+                <ul class="submenu" onfocus="true" th:autofocus="true">
+                    <li><a href="/admin/admin-dashboard/users">Users</a></li>
+                    <li><a href="/registration">New User</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-file-image-o"></i>Reports<i class="fa fa-chevron-down"></i>
+                </div>
+                <ul class="submenu">
+                    <li><a href="#">Entries</a></li>
+                    <li><a href="#">Redirects</a></li>
+                    <li><a href="#">Pingbacks</a></li>
+                    <li><a href="#">Tags</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <!--Body content-->
+    <div class="content">
+        <div class="top-bar">
+            <a href="" class="side-menu-link burger">
+                <span class='burger_inside' id='bgrOne'></span>
+                <span class='burger_inside' id='bgrTwo'></span>
+                <span class='burger_inside' id='bgrThree'></span>
+            </a>
+        </div>
+        <div id="orders">
+            <section class="content-inner">
+                <p class="text-center"><em>Administration dashboard wakeodessacrew website! welcome back! :) </em></p>
+                <img src="/img/logo.png" th:src="@{/img/logo.png}" class="center-block"/>
+
+
+                <!--/*@thymesVar id="orders" type="java.util.List<com.kravchenko.wakeodessa.domains.Order>"*/-->
+                <table class="table table-striped" th:object="${orders}">
+                   <!-- <input class="search" placeholder="Search" />
+                    <button class="sort" data-sort="id">Sort by user</button>-->
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>User</th>
+                        <th>Delivery Adress</th>
+                        <th>Product</th>
+                        <th>User mobile</th>
+                        <th>Total price</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    <tr th:each="order : ${orders}">
+                        <td th:text="${order.getOrderId()}"></td>
+                        <td th:text="${order.getDate()}"></td>
+                        <td th:text="${order.getUser().login}"></td>
+                        <td th:text="${order.getAdress()}"></td>
+                        <td th:text="${order.orderProducts}"></td>
+                        <td th:text="${order.getMobile()}"></td>
+                        <td th:text="${order.getMobile()}"></td>
+                    </tr>
+                    </tbody>
+                    <ul class="pagination center-block">
+                        <li><a href="#">«</a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a  href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                    <script src="http://listjs.com/assets/javascripts/list.min.js"
+                            th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
+                    <script th:inline="javascript">
+                        var options = {
+                            valueNames: ['id', 'date', 'user', 'deliveri adress', 'product', 'user mobile', 'total price'],
+                            page: 5,
+                            plugins: [
+                                ListPagination({})
+                            ]
+                        };
+                        var ordersList = new List('orders', options);
+                    </script>
+                </table>
+            </section>
+            <ul class="pagination"></ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

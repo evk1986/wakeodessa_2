@@ -21,9 +21,62 @@ public class User implements Serializable {
     private String email;
     @Column
     private String role;
-
     @Column
     private String name;
+    @Column
+    private String homeAdress;
+
+    public String getHomeAdress() {
+        return homeAdress;
+    }
+
+    public void setHomeAdress(String homeAdress) {
+        this.homeAdress = homeAdress;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getTelNumber() {
+        return telNumber;
+    }
+
+    public void setTelNumber(String telNumber) {
+        this.telNumber = telNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    @Column
+
+    private String surname;
+    @Column
+    private String telNumber;
+    @Column
+    private String gender;
+    @Column
+    private String dateOfBirth;
+
+
 
 
   /*  @OneToMany(mappedBy = "orderId")

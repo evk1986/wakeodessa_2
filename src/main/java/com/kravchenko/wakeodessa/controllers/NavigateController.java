@@ -30,7 +30,7 @@ public class NavigateController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registrationUser(@ModelAttribute(value = "user") User user) {
         user.setRole(Role.USER.getName());
-        userService.add(user);
+        userService.save(user);
         return "redirect:index.html";
     }
 

@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en">
+
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link href="/css/main.css"
+          th:href="@{/css/main.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="/css/user.css"
+          th:href="@{/css/user.css}"
+          rel="stylesheet" media="screen"/>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" style="background-color: #404040">
+                    <h3 class="panel-title" style="color: white; font-weight: bold">Edit profile</h3>
+                </div>
+                <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
+                <!--/*@thymesVar id="login" type="java.lang.String"*/-->
+
+
+                <form class="edit"
+                      th:action="@{/user/user_profile}" th:object="${user}"
+                      method="post">
+                    <input type="hidden" th:field="${user.login}" th:value="${login}"/>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center">
+                                <img alt="User Pic"
+                                     src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+                                     class="img-circle img-responsive"/></div>
+
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>Name:</td>
+
+                                        <td><input type="text" name="login" id="login" class="form-control input-sm"
+                                                   th:placeholder="${user.getName()}" th:field="*{name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surname:</td>
+                                        <td><input type="text" name="surname" id="surname" class="form-control input-sm"
+                                                   th:placeholder="${user.getSurname()}" th:field="*{surname}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td><input type="text" name="date" id="date" class="form-control input-sm"
+                                                   th:placeholder="${user.dateOfBirth}" th:field="*{dateOfBirth}"/></td>
+                                    </tr>
+
+                                    <tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td><input type="radio" name="gender" value="male"/>Male<br>
+                                            <input type="radio" name="gender" value="female"
+                                                   checked="checked"/>Female</br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delivery Adres</td>
+                                        <td><input type="text" name="adress" id="adress" class="form-control input-sm"
+                                                   th:placeholder="${user.homeAdress}" th:field="*{homeAdress}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><input type="text" name="email" id="email" class="form-control input-sm"
+                                                   th:placeholder="${user.email}" th:field="*{email}"/></td>
+                                    </tr>
+                                    <td>Phone Number</td>
+                                    <td><input type="text" name="tel" id="tel" class="form-control input-sm"
+                                               th:placeholder="${user.telNumber}" th:field="*{telNumber}"/>
+                                    </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <div th:align="center">
+                                    <input type="submit" value="Save" class="btn btn-primary mybtn"/>
+                                    <input type="reset" value="Cancel" class="btn btn-primary mybtn"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -28,6 +28,11 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
+    public List<Product> findByCategory(String category) {
+        return repository.findByCategory(category);
+    }
+
+    @Override
     public Product find(Product product) {
         return repository.findOne(product.getCode());
     }

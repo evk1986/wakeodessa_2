@@ -1,14 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head lang="en">
 
     <title>Login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{'http://fonts.googleapis.com/css?family=Oswald'}"
-          href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css"/>
-    <link th:href="@{'http://fonts.googleapis.com/css?family=Open+Sans'}"
-          href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type="text/css"/>
     <link href="/static/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
@@ -17,116 +13,106 @@
     <link href="/css/main.css"
           th:href="@{/css/main.css}"
           rel="stylesheet" media="screen"/>
-    <link href="/css/login.css"
+    <link href="/css/user.css"
           th:href="@{/css/user.css}"
           rel="stylesheet" media="screen"/>
 
     <script th:inline="javascript">
-        /*<![CDATA[*/
-        /*[+
-         $(document).ready(function() {
-         var panels = $('.user-infos');
-         var panelsButton = $('.dropdown-user');
-         panels.hide();
-
-         //Click dropdown
-         panelsButton.click(function() {
-         //get data-for attribute
-         var dataFor = $(this).attr('data-for');
-         var idFor = $(dataFor);
-
-         //current button
-         var currentButton = $(this);
-         idFor.slideToggle(400, function() {
-         //Completed slidetoggle
-         if(idFor.is(':visible'))
-         {
-         currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
-         }
-         else
-         {
-         currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
-         }
-         })
-         });
 
 
-         $('[data-toggle="tooltip"]').tooltip();
+        $(document).ready(function () {
 
-         $('button').click(function(e) {
-         e.preventDefault();
-         alert("This is a demo.\n :-)");
-         });
-         });
-         +]*/
-        /*]]>*/
+            $("#maList").hide(0);
+            $("#hide").hide();
+
+            $("#show").click(function () {
+
+                $("#maList").show(1300);
+                $("#hide").show();
+                $("#show").hide();
+            });
+
+            $("#hide").click(function () {
+                $("#maList").hide(1300);
+                $("#show").show();
+                $("#hide").hide();
+            });
+        });
+
     </script>
+
+
 </head>
 <body>
+<!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <A href="edit.html">Edit Profile</A>
+            <A th:href="@{'/user/user_edit/'+${user.login}}">Edit Profile</A>
 
             <A href="edit.html">Logout</A>
             <br/>
-            <p class=" text-info">May 05,2014,03:00 pm </p>
+            <p class=" text-info" th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"
+               th:inline="text"></p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
 
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Sheena Shrestha</h3>
+                    <h3 class="panel-title" style="font-weight: bold; text-transform: capitalize;" th:inline="text">
+                        [[${#httpServletRequest.remoteUser}]]</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             <img alt="User Pic"
                                  src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
-                                                                            class="img-circle img-responsive"/></div>
+                                 class="img-circle img-responsive"/></div>
 
 
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td>Department:</td>
-                                    <td>Programming</td>
+                                    <td>Name:</td>
+
+                                    <td th:text="*{user.name}"></td>
                                 </tr>
                                 <tr>
-                                    <td>Hire date:</td>
-                                    <td>06/23/2013</td>
+                                    <td>Surname:</td>
+
+                                    <td th:text="*{user.surname}"></td>
                                 </tr>
                                 <tr>
                                     <td>Date of Birth</td>
-                                    <td>01/24/1988</td>
+                                    <td th:text="*{user.dateOfBirth}"></td>
                                 </tr>
 
                                 <tr>
                                 <tr>
                                     <td>Gender</td>
-                                    <td>Female</td>
+                                    <td th:text="*{user.gender}">
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Home Address</td>
-                                    <td>Kathmandu,Nepal</td>
+                                    <td>Delivery Adres</td>
+                                    <td th:text="*{user.homeAdress}"></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                    <td th:text="*{user.email}"></td>
                                 </tr>
                                 <td>Phone Number</td>
-                                <td>123-4567-890(Landline)<br/><br/>555-4567-890(Mobile)
-                                </td>
+                                <td th:text="*{user.telNumber}"></td>
 
                                 </tr>
 
                                 </tbody>
                             </table>
-
-                            <a href="#" class="btn btn-primary">My Sales Performance</a>
-                            <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                            <!--th:href="@{'/user/user_profile/orders/' + ${user.login}}"-->
+                            <a id="show" class="btn btn-primary ordersList">Show my orders</a>
+                            <a id="hide" class="btn btn-primary">Hide my orders</a>
                         </div>
                     </div>
                 </div>
@@ -145,5 +131,35 @@
         </div>
     </div>
 </div>
+
+<!--/*@thymesVar id="orders" type="java.util.List<com.kravchenko.wakeodessa.domains.Order>"*/-->
+<div class="container">
+    <section class="content-inner table-responsive">
+        <table id="maList" align="center" class="table table-condensed table-bordered"
+               th:object="${orders}">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Delivery Adress</th>
+                <th>Product</th>
+                <th>Total price</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.getOrderId()}"></td>
+                <td th:text="${order.getDate()}"></td>
+                <td th:text="${order.getAdress()}"></td>
+                <td th:text="${order.orderProducts}"></td>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
 </body>
 </html>

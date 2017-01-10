@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     /**
@@ -30,8 +34,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public User add(User user) {
+    public User save(User user) {
+        if (user.getPassword() == null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userRepository.save(user);
         return user;
     }
@@ -48,7 +54,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-
         User user = userRepository.findOneByLogin(login);
         if (user == null) {
             throw new UsernameNotFoundException("User with name " + login + " not found");

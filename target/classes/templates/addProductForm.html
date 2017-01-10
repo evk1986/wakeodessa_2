@@ -12,6 +12,8 @@
     <link href="/css/main.css"
           th:href="@{/css/main.css}"
           rel="stylesheet" media="screen"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
 </head>
 <body>
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
@@ -98,37 +100,73 @@
     </fieldset>
 </form>
 <!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
-<table class="table table-striped" th:object="${products}" th:if="${products != null}">
-    <tr th:each="maProduct : ${products}">
-        <td style="font-weight: bold;" th:text="${maProduct.getProductName()}">Name</td>
-        <td th:text="${maProduct.getCategory()}">Category</td>
-        <td th:text="${maProduct.getBrand()}">Brand</td>
-        <td th:text="${maProduct.getInfo()}">Information about product</td>
-        <td style="font-weight: bold;" th:text="${maProduct.getPrice()}+'$'">Price</td>
-        <td><p><img class="img-rounded" style="width: 100px; height: auto"
-                    th:src="@{'/admin/addProduct/image/'+${maProduct.getProduct_id()}}"/></p></td>
-        <td>
-            <form id="edit_form" name="edit_form" th:action="@{'/admin/addProduct/edit/'+${maProduct.getProduct_id()}}"
-                  method="get">
-                <div class="text-center pull-left">
-                    <button class="btn btn-primary btn-lg mybtn" id="edit">Edit</button>
-                </div>
-            </form>
-        </td>
-        <td>
-            <form id="deleteForm" name="delete" th:action="@{'/admin/addProduct/delete/'+${maProduct.getProduct_id()}}"
-                  method="get">
-                <div class="text-center pull-left">
-                    <button type="submit" class="btn btn-danger btn-lg mybtn">Delete</button>
-                </div>
-            </form>
+<div id="products">
+    <table class="table table-striped" th:object="${products}" th:if="${products != null}">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Information</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Controls</th>
+        </tr>
+        </thead>
+        <tbody class="list">
+        <tr th:each="maProduct : ${products}">
+            <td style="font-weight: bold;" th:text="${maProduct.getProductName()}">Name</td>
+            <td th:text="${maProduct.getCategory()}">Category</td>
+            <td th:text="${maProduct.getBrand()}">Brand</td>
+            <td th:text="${maProduct.getInfo()}">Information</td>
+            <td style="font-weight: bold;" th:text="${maProduct.getPrice()}+'$'">Price</td>
+            <td><p><img class="img-rounded" style="width: 100px; height: auto"
+                        th:src="@{'/admin/addProduct/image/'+${maProduct.getProduct_id()}}"/></p></td>
+            <td>
+                <form id="edit_form" name="edit_form"
+                      th:action="@{'/admin/addProduct/edit/'+${maProduct.getProduct_id()}}"
+                      method="get">
+                    <div class="text-center pull-left">
+                        <button class="btn btn-primary btn-lg mybtn" id="edit">Edit</button>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form id="deleteForm" name="delete"
+                      th:action="@{'/admin/addProduct/delete/'+${maProduct.getProduct_id()}}"
+                      method="get">
+                    <div class="text-center pull-left">
+                        <button type="submit" class="btn btn-danger btn-lg mybtn">Delete</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+        <ul class="pagination center-block">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a class="active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
+        <script src="http://listjs.com/assets/javascripts/list.min.js"
+                th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
 
-
-        </td>
-    </tr>
-
-
-</table>
-
+        <script th:inline="javascript">
+            var options = {
+                valueNames: ['name', 'brand', 'information', 'photo', 'price', 'controls'],
+                page: 2,
+                plugins: [
+                    ListPagination({})
+                ]
+            };
+            var productsList = new List('products', options);
+        </script>
+    </table>
+</div>
 </body>
 </html>

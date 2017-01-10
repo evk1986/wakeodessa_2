@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" th:name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <link href="webjars/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="webjars/css/main.css"
+          th:href="@{/css/main.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="webjars/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/main.css}"
+          href="webjars/css/main.css"
+          rel="stylesheet" media="screen"/>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <script src="webjars/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
+
+    <script src="webjars/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="#"><img th:src="@{resource/img/logo.png}" src=""/></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Video</a></li>
+                <li class="active">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Spots
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" style="background-color:white; opacity:0.7">
+                        <li role="presentation"><a role="menuitem" href="#"
+                                                   style="color:white; font-weight:600;">CWP</a></li>
+                        <li role="presentation"><a role="menuitem" href="#"
+                                                   style="color:white; font-weight:600;">YWP</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="/gallery">Gallery</a></li>
+                <li class="active">
+                    <a href="/shop/main">Brand Shop</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <!--/*@thymesVar id="currentUser" type="com.kravchenko.wakeodessa.domains.User"*/-->
+
+                <li onload="test()" id="adminka">
+                    <a href="/admin/admin-dashboard" method="post"><span
+                            class="glyphicon glyphicon-user"></span>Admin</a>
+                </li>
+                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <!--<input id="opener" type="button"><span class="glyphicon glyphicon-log-in"></span>Login</input>-->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="header-video">
+    <video autoplay="true" loop="true" muted="" style="width:100%; height: auto; position: absolute; ">
+        <source th:src="@{resource/img/1.mp4}" type="video/mp4"/>
+    </video>
+    <div class="container" style=" width: 100%;padding-left:0px ;padding-right: 0px;margin-top: 3px;">
+        <div class="nav">
+            <ul class="pull-left">
+
+            </ul>
+            <ul class="pull-right">
+                <!--  сюда добавить нав бар -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--блок описания и фото райдеров-->
+<div class="team-container">
+
+    <div class="container">
+        <h2>Team Riders</h2>
+        <p>Native spot<em> <a th:href="@{'http://chernomorskiy.com.ua/'}" target="_blank">"Wakepark
+            Chernomorskiy"</a></em></p>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="block">
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/lex.jpg}" src="../static/img/lex.jpg"/>
+                    </div>
+                    <div class="img-desc ">
+                        <a href="www.facebook.com/syntetich">Aleey Mamushev</a>
+                        <p> Lex живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="block">
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
+                    </div>
+                    <div class="img-desc ">
+                        <a href="www.facebook.com/syntetich">Egor Kravchenko</a>
+                        <p> Egor живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="block">
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
+                    </div>
+                    <div class="img-desc ">
+                        <a href="http://www.google.com"> Каплан Димa</a>
+                        <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
+                    </div>
+                    <div class="img-desc">
+                        <a href="www.facebook.com/kaplan"> Каплан Димa</a>
+                        <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <footer style="height:10%;">
+        <div class="col-lg-12">
+            <p>Copyright &copy; Egor Kravchenko 2016</p>
+
+        </div>
+
+    </footer>
+
+
+</div>
+</body>
+
+</html>

@@ -34,6 +34,11 @@ public class NavigateController {
         return "redirect:index.html";
     }
 
+    @RequestMapping("/")
+    public String home() {
+        return "index";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String userLogIn() {
         return "login";

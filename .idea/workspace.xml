@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db7317c9-42d7-4d6e-b61a-2b621325a7de" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/media/1.mp4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/media/egor.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/media/kaplan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/media/lex.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/media/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/1.mp4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/Odessa_wake_crew_logo_CMYK.eps" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/banner1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/banner2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/banner3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/dark_wall.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/egor.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/kaplan.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/lex.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/logo.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/bodyMain.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/static/index.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kravchenko/wakeodessa/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/kravchenko/wakeodessa/config/SecurityConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kravchenko/wakeodessa/controllers/NavigateController.class" afterPath="$PROJECT_DIR$/target/classes/com/kravchenko/wakeodessa/controllers/NavigateController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/SecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/ThymeleafConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/ThymeleafConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/controllers/NavigateController.java" afterPath="$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/controllers/NavigateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addProductForm.html" afterPath="$PROJECT_DIR$/target/classes/templates/addProductForm.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addbrand.html" afterPath="$PROJECT_DIR$/target/classes/templates/addbrand.html" />
@@ -116,8 +92,8 @@
       <file leaf-file-name="ThymeleafConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/ThymeleafConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+            <state relative-caret-position="312">
+              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1108,7 +1084,7 @@
       <workItem from="1483093044761" duration="15400000" />
       <workItem from="1483782570291" duration="8074000" />
       <workItem from="1483891004676" duration="26847000" />
-      <workItem from="1484073616407" duration="13208000" />
+      <workItem from="1484073616407" duration="13249000" />
     </task>
     <task id="LOCAL-00001" summary="first commit&#10;">
       <created>1477309421021</created>
@@ -1250,11 +1226,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484080844416</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix&#10;&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;">
+      <created>1484086929221</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1484086929221</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382177000" />
+    <option name="totallyTimeSpent" value="382218000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1267,7 +1250,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1604" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1282,7 +1265,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19948186" sideWeight="0.48788926" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19948186" sideWeight="0.48788926" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16580977" sideWeight="0.5121107" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24742931" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="913" y="143" width="527" height="766" />
@@ -1380,7 +1363,8 @@
     <MESSAGE value="order ready. надо решить вопрос со списком продукции" />
     <MESSAGE value="fix&#10;index&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;sort&#10;profile user" />
     <MESSAGE value="fix&#10;index&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix&#10;index&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;" />
+    <MESSAGE value="fix&#10;&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix&#10;&#10;contacts&#10;about&#10;button hiden &#10;gllery&#10;video&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1828,8 +1812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kravchenko/wakeodessa/config/ThymeleafConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+        <state relative-caret-position="312">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

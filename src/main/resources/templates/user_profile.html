@@ -50,7 +50,7 @@
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
             <A th:href="@{'/user/user_edit/'+${user.login}}">Edit Profile</A>
 
-            <A href="edit.html">Logout</A>
+            <A href="/logout" th:href="@{/logout}">Logout</A>
             <br/>
             <p class=" text-info" th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"
                th:inline="text"></p>

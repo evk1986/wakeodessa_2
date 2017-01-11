@@ -14,10 +14,10 @@ import org.thymeleaf.templateresolver.TemplateResolver;
  * Created by Egor on 08.01.2017.
  */
 @Configuration
-
 public class ThymeleafConfig extends WebMvcConfigurerAdapter {
+
     @Bean
-    public SpringSecurityDialect springSecurityDialect(){
+    public SpringSecurityDialect springSecurityDialect() {
         return new SpringSecurityDialect();
     }
 
@@ -29,13 +29,14 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public TemplateResolver templateResolver(){
+    public TemplateResolver templateResolver() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         return templateResolver;
     }
+
     @Override
     public void configureDefaultServletHandling(
             DefaultServletHandlerConfigurer configurer) {

@@ -49,7 +49,6 @@ public class UserController {
         System.out.println("currentUser: " + currentUser.toString());
         User user = uds.findByLogin(currentUser.getLogin());
         System.out.println("user: " + user.toString());
-
         user.setName(currentUser.getName());
         user.setEmail(currentUser.getEmail());
         user.setDateOfBirth(currentUser.getDateOfBirth());
@@ -75,26 +74,4 @@ public class UserController {
     }
 
 
-   /* @RequestMapping(value = "/user/user_edit/{id}", method = RequestMethod.POST)
-    public String postUserEditForm(@PathVariable("id") Integer id,
-                                   @ModelAttribute(value = "user") User currentUser,
-                                   Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-        User user = uds.findByLogin(name);
-        user.setName(currentUser.getName());
-        user.setEmail(currentUser.getEmail());
-        user.setDateOfBirth(currentUser.getDateOfBirth());
-        user.setGender(currentUser.getGender());
-        user.setHomeAdress(currentUser.getGender());
-        user.setSurname(currentUser.getSurname());
-        user.setTelNumber(currentUser.getTelNumber());
-        System.out.println("im here ! " + user.toString());
-        uds.save(currentUser);
-        List<Order> orders = os.findAllByOrderByUserByLogin(name);
-        model.addAttribute("orders", orders);
-        model.addAttribute("user", currentUser);
-        System.out.println(orders.toString());
-        return "user_profile";
-    }*/
 }

@@ -13,27 +13,28 @@
     <link href="webjars/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
-    <link href="webjars/css/main.css"
-          th:href="@{/css/main.css}"
-          rel="stylesheet" media="screen"/>
+    <!-- <link href="webjars/css/main.css"
+           th:href="@{/css/main.css}"
+           rel="stylesheet" media="screen"/>-->
     <link href="webjars/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
     <link th:href="@{/css/main.css}"
           href="webjars/css/main.css"
           rel="stylesheet" media="screen"/>
-    <script src="webjars/js/bootstrap.min.js"
-            th:src="@{/js/bootstrap.min.js}"></script>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
-    <script src="webjars/js/jquery-3.1.1.min.js"
-            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <!-- <script src="webjars/js/jquery-3.1.1.min.js"
+             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
 
-
-    <script src="webjars/js/admin.js"
-            th:src="@{/js/admin.js}"></script>
+    <!--
+        <script src="webjars/js/admin.js"
+                th:src="@{/js/admin.js}"></script>-->
 
 </head>
 
@@ -48,15 +49,12 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Video</a></li>
-                <li class="active">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Spots
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu" style="background-color:white; opacity:0.7">
-                        <li role="presentation"><a role="menuitem" href="#"
-                                                   style="color:white; font-weight:600;">CWP</a></li>
-                        <li role="presentation"><a role="menuitem" href="#"
-                                                   style="color:white; font-weight:600;">YWP</a></li>
+                <li class="dropdown">
+                    <a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Wake spots
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="background-color:white; opacity:0.5">
+                        <li><a href="#" th:href="@{'chernomorskiy.com.ua'}" style="font-weight:600;">CWP</a></li>
+                        <li><a href="#" style="font-weight:600;">YWP</a></li>
                     </ul>
                 </li>
                 <li class="active"><a href="/gallery">Gallery</a></li>
@@ -65,17 +63,20 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
-                <!--/*@thymesVar id="currentUser" type="com.kravchenko.wakeodessa.domains.User"*/-->
-
-                <li onload="test()" id="adminka">
+                <li sec:authorize="hasRole('ROLE_ADMIN')" id="adminka">
                     <a href="/admin/admin-dashboard" method="post"><span
-                            class="glyphicon glyphicon-user"></span>Admin</a>
+                            class="glyphicon glyphicon-wrench"></span>Administration dashboard</a>
                 </li>
-                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <!--<input id="opener" type="button"><span class="glyphicon glyphicon-log-in"></span>Login</input>-->
-
+                <li sec:authorize="isAnonymous()">
+                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{user/user_profile}" href="#"><span class="glyphicon glyphicon-user"></span>My
+                        profile</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}" href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,7 +1,9 @@
 package com.kravchenko.wakeodessa.services;
 
+import com.kravchenko.wakeodessa.domains.PasswordResetToken;
 import com.kravchenko.wakeodessa.domains.User;
 import com.kravchenko.wakeodessa.repositories.UserRepository;
+import com.kravchenko.wakeodessa.repositories.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    VerificationTokenRepository passwordTokenRepository;
+
+
 
 
     /**
@@ -48,8 +55,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Integer id) {
-        return userRepository.findOne(Long.valueOf(id));
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findOne(id);
     }
 
     @Override
@@ -66,5 +79,24 @@ public class UserServiceImpl implements UserService {
         Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
         setAuths.add(new SimpleGrantedAuthority(userRole));
         return new ArrayList<>(setAuths);
+    }
+
+    @Override
+    public void createPasswordResetTokenForUser(final User user, final String token) {
+        System.out.println(user.toString() + "Create password reset token");
+        final PasswordResetToken myToken = new PasswordResetToken(token, user);
+        System.out.println(myToken.toString());
+       PasswordResetToken test =  passwordTokenRepository.save(myToken);
+        System.out.println(test.toString()+ " result of saving");
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public void changeUserPassword(User user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
     }
 }

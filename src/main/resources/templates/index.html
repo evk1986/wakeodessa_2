@@ -71,12 +71,15 @@
                     <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{user/user_profile}" href="#"><span class="glyphicon glyphicon-user"></span>My
-                        profile</a>
+                    <a th:href="@{user/user_profile}" href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                        My profile</a>
                 </li>
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/logout}" href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
-                </li>
+               <!-- <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}" href="/logout">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        Logout</a>
+                </li>-->
             </ul>
         </div>
     </div>

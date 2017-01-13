@@ -19,9 +19,19 @@ public interface UserService extends UserDetailsService {
     @Transactional
     User findByLogin(String login);
 
-    User findById(Integer id);
+
+
 
     @Transactional
     List<User> getAll();
 
+    @Transactional
+    User findById(Long id);
+
+    @Transactional
+    User findByEmail(String email);
+
+    void createPasswordResetTokenForUser(final User user, final String token);
+    User findUserByEmail(final String email);
+    void changeUserPassword(User user, String password);
 }

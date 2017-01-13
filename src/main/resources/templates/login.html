@@ -45,9 +45,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center text-info" th:inline="text" th:if="${#httpServletRequest.remoteUser}!=null">Hello
-                [[${#httpServletRequest.remoteUser}]]!</h1>
-            <h1 class="text-center login-title" th:inline="text" th:if="${#httpServletRequest.remoteUser}==null">Sign in
+            <h1 class="text-center text-info"
+                th:inline="text"
+                th:if="${#httpServletRequest.remoteUser}!=null">Welcome to wakeodessacrew</h1>
+            <h1 class="text-center login-title"
+                th:inline="text"
+                th:if="${#httpServletRequest.remoteUser}==null">Sign in
                 to WakeOdessaCrew</h1>
             <div class="account-wall">
                 <img class="profile-img"
@@ -62,22 +65,19 @@
                             type="submit">
                         Sign in
                     </button>
-                   
+
                     <label class="checkbox pull-left">
                         <input type="checkbox" value="remember-me"/>
                         Remember me
                     </label>
                     <a href="user/user_edit" th:inline="text" th:if="${#httpServletRequest.remoteUser}!=null"
                        th:href="@{/user/user_profile.html}"
-                       class="pull-right need-help">[[${#httpServletRequest.remoteUser}]] profile</a><span
+                       class="pull-right need-help"><!--[[${#httpServletRequest.remoteUser}]]-->My profile</a><span
                         class="clearfix"></span>
                 </form>
                 <div class="text-center text-info" th:inline="text"
                      th:if="${#httpServletRequest.remoteUser}==null" th:text="'Hello, pls login!'"></div>
-                <!--  <div class="text-center text-info" th:inline="text" th:if="${#httpServletRequest.remoteUser}!=null">
-                      Hello
-                      [[${#httpServletRequest.remoteUser}]]!
-                  </div>-->
+
 
             </div>
             <div class="text-info" th:if="${param.error}">
@@ -87,9 +87,19 @@
                 You have been logged out.
             </div>
             <div>
-                <a th:inline="text" th:if="${#httpServletRequest.remoteUser}==null" href="/registration"
+                <a th:inline="text"
+                   th:if="${#httpServletRequest.remoteUser}==null"
+                   th:href="@{/registration}"
                    class="pull-left new-account">Create an account </a>
-                <a href="/logout" class="pull-right new-account">Log out </a>
+
+                <a th:inline="text"
+                   th:if="${#httpServletRequest.remoteUser}!=null"
+                   th:href="@{/logout}" class="pull-right new-account">Log out </a>
+
+                <a th:inline="text"
+                   th:if="${#httpServletRequest.remoteUser}==null"
+                   th:href="@{/forget_password}" class="pull-right new-account">Forget password</a>
+
             </div>
         </div>
     </div>

@@ -23,7 +23,6 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
     @Autowired
     UserService service;
 
@@ -52,11 +51,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**", "/shop/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/shop/**").access("hasRole('ROLE_USER') and hasRole('ROLE_ADMIN')")
+                .antMatchers("/shop/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/resources/**", "/**").permitAll()
                 .antMatchers("/static/**", "/**").permitAll()
-                .antMatchers("/registration","/").permitAll()
+                .antMatchers("/registration", "/").permitAll()
                 .antMatchers("/media/**").permitAll()
+                .antMatchers("/user/updatePassword*", "/user/savePassword*", "/updatePassword*").hasAuthority("CHANGE_PASSWORD_PRIVILEGE")
                 .and()
                 .formLogin().
                 loginPage("/login").permitAll()

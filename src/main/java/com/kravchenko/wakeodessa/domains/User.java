@@ -12,9 +12,11 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     @Column
     private String login;
+
     @Column
     private String password;
     @Column
@@ -26,6 +28,18 @@ public class User implements Serializable {
     @Column
     private String homeAdress;
 
+
+
+    /*@OneToOne(mappedBy = "user")
+    private PasswordResetToken passwordResetToken;
+
+    public PasswordResetToken getPasswordResetToken() {
+        return passwordResetToken;
+    }
+
+    public void setPasswordResetToken(PasswordResetToken setting) {
+        this.passwordResetToken = setting;
+    }*/
     public String getHomeAdress() {
         return homeAdress;
     }
@@ -67,7 +81,6 @@ public class User implements Serializable {
     }
 
     @Column
-
     private String surname;
     @Column
     private String telNumber;
@@ -119,11 +132,11 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -166,7 +179,7 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id.intValue();
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);

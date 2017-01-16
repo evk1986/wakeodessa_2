@@ -6,11 +6,11 @@
     margin-bottom: 0;
 }
 
-.dropdown-user {
+/*.dropdown-user {
     margin: 13px 0;
     padding: 5px;
     height: 100%;
-}
+}*/
 
 .dropdown-user:hover {
     cursor: pointer;

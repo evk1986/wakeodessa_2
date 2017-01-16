@@ -6,4 +6,8 @@ package com.kravchenko.wakeodessa.domains;
 public class PasswordUtilValidation {
 
 
+    private String oldPassword;
+
+
+    private String newPassword;
 }

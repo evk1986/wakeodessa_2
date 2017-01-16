@@ -20,7 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -53,18 +53,23 @@ public class UserController {
     @Autowired
     UserSecurityService securityService;
 
-    @RequestMapping(value = "/user/user_profile", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/user-profile", method = RequestMethod.GET)
     public String getUserProfile(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        /*User user =
+                (User) SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal();*/
         String name = auth.getName(); //get logged in username
         System.out.println(name);
         User user = uds.findByLogin(name);
-        List<Order> orders = os.findAllByOrderByUserByLogin(user.getLogin());
-        System.out.println(orders.toString());
+        List<Order> orders = new ArrayList<>();
+
+        if (user != null) {
+            orders = os.findAllByOrderByUserByLogin(user.getLogin());
+            model.addAttribute("orders", orders);
+        }
+       // System.out.println(orders.toString());
         model.addAttribute("user", user);
-        model.addAttribute("orders", orders);
-
-
         return "user_profile";
     }
 
@@ -147,7 +152,6 @@ public class UserController {
     @RequestMapping(value = "/user/savePassword", method = RequestMethod.POST)
     @ResponseBody
     public GenericResponse savePassword(Locale locale,
-                                        @Valid User userDto,
                                         @RequestParam(value = "newPassword") String newPassword) {
         User user =
                 (User) SecurityContextHolder.getContext()
@@ -164,8 +168,12 @@ public class UserController {
         String url = contextPath + "/user/changePassword?id=" +
                 user.getId() + "&token=" + token;
         System.out.println(url.toString());
-        String message = messages.getMessage("message.resetPassword",
-                null, locale);
+      /*  String message = messages.getMessage("message.resetPassword",
+                null, locale);*/
+        String message = "Вы получили етот e-mail, так кто-то совершил " +
+                "действие по восстановления пароля на сайте woc.od.ua. " +
+                "Если єто не вы, никак не реагируйте на ето письмо. " +
+                "Для восстановления пароля перейдите по ссылке:";
         return constructEmail("Reset Password", message + " \r\n" + url, user);
     }
 

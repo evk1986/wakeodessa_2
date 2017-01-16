@@ -25,9 +25,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-
         registry.addViewController("/").setViewName("index.html");
-
     }
 
     @Bean
@@ -47,8 +45,9 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resource/**").addResourceLocations("WEB-INF/resources/");
+        registry.addResourceHandler("/resource/**").addResourceLocations("WEB-INF/resource/");
     }
+
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();

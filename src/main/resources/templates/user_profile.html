@@ -10,12 +10,14 @@
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <link href="/css/main.css"
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+   <!-- <link href="/css/main.css"
           th:href="@{/css/main.css}"
-          rel="stylesheet" media="screen"/>
-    <link href="/css/user.css"
+          rel="stylesheet" media="screen"/>-->
+  <!--  <link href="/css/user.css"
           th:href="@{/css/user.css}"
-          rel="stylesheet" media="screen"/>
+          rel="stylesheet" media="screen"/>-->
 
     <script th:inline="javascript">
 
@@ -44,12 +46,12 @@
 
 </head>
 <body>
+<header th:replace="fragment :: header"></header>
 <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
             <A th:href="@{'/user/user_edit/'+${user.login}}">Edit Profile</A>
-
             <A href="/logout" th:href="@{/logout}">Logout</A>
             <br/>
             <p class=" text-info" th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"

@@ -4,14 +4,13 @@
     padding: 14px 10px;
 }
 
-.nav li {
+/*.nav li {
     display: inline;
-}
+}*/
 
 .header-video {
     position: relative;
     padding-bottom: 56.25%;
-   
     max-width: 100%;
     height: 45%;
     z-index: 1;
@@ -19,6 +18,10 @@
 
 video {
     object-fit: contain;
+}
+
+body {
+    margin-top: 5%;
 }
 
 footer {
@@ -46,13 +49,16 @@ footer {
     body .header-video .va-middle p {
         visibility: hidden;
     }
+
     #howBtn {
         visibility: hidden;
     }
+
     #searchBar {
         visibility: hidden;
         z-index: 100;
     }
+
     /* #modileSearchBar h5 {
     visibility: visible;
   }
@@ -65,11 +71,12 @@ footer {
     .va-middle h6 {
         visibility: hidden;
     }
+
     body .header-video .va-middle h1 {
         margin: 0 auto;
         vertical-align: middle;
         text-align: center;
-        
+
         font-size: 27px;
         font-weight: normal;
         color: white;
@@ -90,6 +97,7 @@ footer {
     vertical-align: middle;
     z-index: 100;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -100,8 +108,8 @@ footer {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -128,9 +136,10 @@ footer {
     cursor: pointer;
 }
 
-.mybtn{
-    background:#404040
+.mybtn {
+    background: #404040
 }
+
 .header-video .container {
     position: absolute;
     margin: auto;
@@ -176,7 +185,6 @@ footer {
     height: 50px;
 }
 
-
 /*.nav_bar{
   height: 10%
   max-width:250px;
@@ -194,7 +202,7 @@ footer {
 .va-middle h1 {
     margin: 0 auto;
     text-align: center;
-    
+
     font-size: 55px;
     font-weight: bold;
     color: white;
@@ -203,13 +211,13 @@ footer {
 
 .langPanel ul li {
     color: white;
-    
+
 }
 
 .va-middle h6 {
     vertical-align: center;
     text-align: center;
-   
+
     text-align: center;
     font-size: 14px;
     margin: 0;
@@ -262,25 +270,24 @@ footer .col-md-8 {
     background-color: white;
 }
 
-
-
 .img-desc {
     color: #ffffff;
     width: inherit;
-   
+
     background-color: rgba(35, 35, 35, 0.74);
     position: absolute;
     top: 0%;
     vertical-align: middle;
     left: 0;
     bottom: -20px;
-    padding:10px;
+    padding: 10px;
     opacity: 0;
     font-family: sans-serif;
-   /* font-weight: 500;*/
+    /* font-weight: 500;*/
     box-sizing: border-box;
     transition: bottom 0.3s, opacity 0.8s;
 }
+
 .block:hover .img-desc {
     opacity: 1;
     bottom: 0px;
@@ -296,10 +303,7 @@ footer .col-md-8 {
 
 .team-container {
 
-    
 }
-
-
 
 #copyright {
     color: aliceblue;

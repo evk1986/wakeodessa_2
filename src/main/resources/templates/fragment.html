@@ -30,7 +30,8 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Video</a></li>
+                    <li class="active"><a href="/news_page">News</a></li>
+                    <li class="active"><a href="/">Team</a></li>
                     <li class="dropdown">
                         <a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Wake spots
                             <span class="caret"></span></a>
@@ -53,7 +54,7 @@
                         <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/user/user-profile}" href="#">
+                        <a th:href="@{/user/user_profile}" href="#">
                             <span class="glyphicon glyphicon-user"></span>
                             My profile</a>
                     </li>

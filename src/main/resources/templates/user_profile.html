@@ -12,9 +12,9 @@
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script src="webjars/js/bootstrap.min.js"
             th:src="@{/js/bootstrap.min.js}"></script>
-   <!-- <link href="/css/main.css"
+    <link href="/css/main.css"
           th:href="@{/css/main.css}"
-          rel="stylesheet" media="screen"/>-->
+          rel="stylesheet" media="screen"/>
   <!--  <link href="/css/user.css"
           th:href="@{/css/user.css}"
           rel="stylesheet" media="screen"/>-->
@@ -58,12 +58,10 @@
                th:inline="text"></p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-
-
             <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title" style="font-weight: bold; text-transform: capitalize;" th:inline="text">
-                        [[${#httpServletRequest.remoteUser}]]</h3>
+                <div class="panel-heading" style="background-color: #2BBCDE;" >
+                    <h3 class="panel-title" style="font-weight: bold; text-transform: capitalize;" th:inline="text" th:text="${user.login}">
+                        <!--[[${#httpServletRequest.remoteUser}]]--></h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -71,8 +69,6 @@
                             <img alt="User Pic"
                                  src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
                                  class="img-circle img-responsive"/></div>
-
-
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>

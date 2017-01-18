@@ -11,114 +11,73 @@
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <link href="/css/news.css"
-          th:href="@{/css/news.css}"
-          rel="stylesheet" media="screen"/>
-   <!-- <link href="/css/login.css"
-          th:href="@{/css/login.css}"
-          rel="stylesheet" media="screen"/>-->
+    <!--  <link href="/css/news.css"
+            th:href="@{/css/news.css}"
+            rel="stylesheet" media="screen"/>-->
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        .w3-sidenav a, .w3-sidenav h4 {
+            font-weight: bold
+        }
+    </style>
+
 </head>
-<body>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
 <section class="navbar-header">
     <header th:replace="fragment :: header"></header>
 </section>
-<section class="publicaciones-blog-home">
-    <div class="container">
-        <div class="">
-            <h2>Wakeboard<br></br>  <b>News and Videos</b></h2>
-            <div class="row-page row">
-                <div class="col-page col-sm-8 col-md-6">
-                    <a href="" class="black fondo-publicacion-home">
-                        <div class="img-publicacion-principal-home">
-                            <img class="" src="#" th:src="@{resource/img/lex.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-principal-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-page col-sm-4 col-md-3">
-                    <a href=""  class="fondo-publicacion-home">
-                        <div class="img-publicacion-home">
-                            <img class="img-responsive" src="#" th:src="@{resource/img/egor.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-page col-sm-4 col-md-3">
-                    <a href="" class="fondo-publicacion-home">
-                        <div class="img-publicacion-home">
-                            <img class="img-responsive" src="#" th:src="@{resource/img/1.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-page col-sm-4 col-md-3">
-                    <a href="" class="fondo-publicacion-home">
-                        <div class="img-publicacion-home">
-                            <img class="img-responsive" src="#" th:src="@{resource/img/1.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hidden-sm col-page col-sm-4 col-md-3">
-                    <a href="" class="fondo-publicacion-home">
-                        <div class="img-publicacion-home">
-                            <img class="img-responsive" src="#" th:src="@{resource/img/1.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hidden-sm col-page col-sm-4 col-md-3">
-                    <a href="" class="fondo-publicacion-home">
-                        <div class="img-publicacion-home">
-                            <img class="img-responsive" src="#" th:src="@{resource/img/1.jpg}"/>
-                        </div>
-                        <div class="contenido-publicacion-home">
-                            <h3>Neque porro quisquam est qui dolorem ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat porta ex, sed ullamcorper ipsum lacinia nec.<span>...</span></p>
-                        </div>
-                        <div class="mascara-enlace-blog-home">
-                            <span>Lorem </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-page col-sm-4 col-md-3">
-                    <a href="#" class="todas-las-publicaciones-home">
-                        <span>Neque porro quisquam est qui dolorem ipsum</span>
-                    </a>
+<!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
+<header class="w3-container w3-center w3-padding-32">
+    <h1><b>MY BLOG</b></h1>
+    <p>Welcome to the blog of <span class="w3-tag">unknown</span></p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+    <!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
+    <!-- Blog entries -->
+    <div class="w3-col l5 s10" th:each="maNews:*{newses}">
+        <!-- Blog entry -->
+        <div class="w3-card-4 w3-margin w3-white">
+            <img style="width:35%; height: auto " src="#" th:src="@{'/news/image/'+${maNews.newsId}}" alt="Nature"/>
+            <div class="w3-container w3-padding-8">
+                <h3 th:text="${maNews.title}"><b>TITLE HEADING</b></h3>
+                <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span></h5>
+            </div>
+
+            <div class="w3-container">
+                <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+                    placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non
+                    congue ullam corper. Praesent tincidunt sed
+                    tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
+                    fringilla.</p>
+                <div class="w3-row">
+                    <div class="w3-col m8 s12">
+                        <p>
+                            <button th:onclick="'location.href=/news/'+${maNews.getNewsId()}"
+                                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ
+                                MORE »</b></button>
+
+                        </p>
+                    </div>
+                    <div class="w3-col m4 w3-hide-small">
+                        <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                class="w3-tag">0</span></span></p>
+                    </div>
                 </div>
             </div>
         </div>
+        <hr></hr>
     </div>
-</section>
+</div>
+
 </body>
 </html>

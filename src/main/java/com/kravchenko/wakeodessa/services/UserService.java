@@ -19,9 +19,6 @@ public interface UserService extends UserDetailsService {
     @Transactional
     User findByLogin(String login);
 
-
-
-
     @Transactional
     List<User> getAll();
 
@@ -31,7 +28,12 @@ public interface UserService extends UserDetailsService {
     @Transactional
     User findByEmail(String email);
 
+    @Transactional
     void createPasswordResetTokenForUser(final User user, final String token);
+
+    @Transactional
     User findUserByEmail(final String email);
+
+    @Transactional
     void changeUserPassword(User user, String password);
 }

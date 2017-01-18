@@ -21,6 +21,14 @@ body {
     border-radius: 4px;
 }
 
+#products p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
 .caption {
     height: 130px;
     overflow: hidden;

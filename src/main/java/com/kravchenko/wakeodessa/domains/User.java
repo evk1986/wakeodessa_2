@@ -28,18 +28,16 @@ public class User implements Serializable {
     @Column
     private String homeAdress;
 
+    @Column
+    private String surname;
+    @Column
+    private String telNumber;
+    @Column
+    private String gender;
+    @Column
+    private String dateOfBirth;
 
 
-    /*@OneToOne(mappedBy = "user")
-    private PasswordResetToken passwordResetToken;
-
-    public PasswordResetToken getPasswordResetToken() {
-        return passwordResetToken;
-    }
-
-    public void setPasswordResetToken(PasswordResetToken setting) {
-        this.passwordResetToken = setting;
-    }*/
     public String getHomeAdress() {
         return homeAdress;
     }
@@ -80,20 +78,9 @@ public class User implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @Column
-    private String surname;
-    @Column
-    private String telNumber;
-    @Column
-    private String gender;
-    @Column
-    private String dateOfBirth;
 
 
 
-
-  /*  @OneToMany(mappedBy = "orderId")
-    private List<Order> order;*/
 
     public String getName() {
         return name;
@@ -102,14 +89,6 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-  /*  public List<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Order> order) {
-        this.order = order;
-    }*/
-
 
     public String getConfPassword() {
         return confPassword;
@@ -192,7 +171,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                ", email='" + email + '\'' + "role= " + role +
                 '}';
     }
 }

@@ -63,7 +63,7 @@
 
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3" id="categories" th:fragment="categories">
             <p class="lead">Shop Name</p>
             <div class="list-group">
                 <a href=""  th:href="@{'/shop/main/'+${categories.getDisplayedName().toLowerCase()}}" class="list-group-item"
@@ -114,7 +114,8 @@
                     <h4 style="align-content: center"> No products available </h4>
                     </div>
                 <div class="col-sm-4 col-lg-4 col-md-4"
-                     th:each="product : ${products}">
+                     th:each="product : ${products}"
+                id="products">
                     <div class="thumbnail">
                         <a th:href="@{'/shop/main/product/'+${product.getProduct_id()}}">
                             <img th:src="@{'/shop/main/get_product_image/image/'+${product.getProduct_id()}}" alt=""/>

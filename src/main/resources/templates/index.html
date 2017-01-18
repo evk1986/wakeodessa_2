@@ -29,61 +29,12 @@
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
-    <!-- <script src="webjars/js/jquery-3.1.1.min.js"
-             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
 
-    <!--
-        <script src="webjars/js/admin.js"
-                th:src="@{/js/admin.js}"></script>-->
     <header th:replace="fragment :: header"></header>
 </head>
 
 <body>
-<!--<nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="#"><img th:src="@{resource/img/logo.png}" src=""/></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Video</a></li>
-                <li class="dropdown">
-                    <a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Wake spots
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu" style="background-color:white; opacity:0.5">
-                        <li><a href="#" th:href="@{'chernomorskiy.com.ua'}" style="font-weight:600;">CWP</a></li>
-                        <li><a href="#" style="font-weight:600;">YWP</a></li>
-                    </ul>
-                </li>
-                <li class="active"><a href="/gallery">Gallery</a></li>
-                <li class="active">
-                    <a href="/shop/main">Brand Shop</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li sec:authorize="hasRole('ROLE_ADMIN')" id="adminka">
-                    <a href="/admin/admin-dashboard" method="post"><span
-                            class="glyphicon glyphicon-wrench"></span>Administration dashboard</a>
-                </li>
-                <li sec:authorize="isAnonymous()">
-                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{user/user_profile}" href="#">
-                        <span class="glyphicon glyphicon-user"></span>
-                        My profile</a>
-                </li>
-               &lt;!&ndash; <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/logout}" href="/logout">
-                        <span class="glyphicon glyphicon-log-out"></span>
-                        Logout</a>
-                </li>&ndash;&gt;
-            </ul>
-        </div>
-    </div>
-</nav>-->
+
 <div class="header-video">
     <video autoplay="true" loop="true" muted="" style="width:100%; height: auto; position: absolute; ">
         <source th:src="@{resource/img/1.mp4}" type="video/mp4"/>
@@ -113,7 +64,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/lex.jpg}" src="../static/img/lex.jpg"/>
                     </div>
-                    <div class="img-desc ">
+                    <div class="img-information ">
                         <a href="www.facebook.com/syntetich">Aleey Mamushev</a>
                         <p> Lex живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -126,7 +77,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
-                    <div class="img-desc ">
+                    <div class="img-information ">
                         <a href="www.facebook.com/syntetich">Egor Kravchenko</a>
                         <p> Egor живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -142,7 +93,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
                     </div>
-                    <div class="img-desc ">
+                    <div class="img-information ">
                         <a href="http://www.google.com"> Каплан Димa</a>
                         <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -154,7 +105,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
-                    <div class="img-desc">
+                    <div class="img-information">
                         <a href="www.facebook.com/kaplan"> Каплан Димa</a>
                         <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7

@@ -10,11 +10,13 @@ com\kravchenko\wakeodessa\services\OrderServiceImpl.class
 com\kravchenko\wakeodessa\repositories\OrderRepository.class
 com\kravchenko\wakeodessa\controllers\EShopController.class
 com\kravchenko\wakeodessa\repositories\StorageRepository.class
+com\kravchenko\wakeodessa\repositories\NewsRepository.class
 com\kravchenko\wakeodessa\controllers\AdminDashboardContoller.class
 com\kravchenko\wakeodessa\domains\GenericResponse.class
 com\kravchenko\wakeodessa\repositories\ProductRepository.class
 com\kravchenko\wakeodessa\domains\User.class
 com\kravchenko\wakeodessa\services\UserServiceImpl.class
+com\kravchenko\wakeodessa\domains\News.class
 com\kravchenko\wakeodessa\repositories\VerificationTokenRepository.class
 com\kravchenko\wakeodessa\services\OrderService.class
 com\kravchenko\wakeodessa\services\ProductServiceImpl.class
@@ -36,7 +38,10 @@ com\kravchenko\wakeodessa\services\UserService.class
 com\kravchenko\wakeodessa\config\SecurityInit.class
 com\kravchenko\wakeodessa\domains\PasswordResetToken.class
 com\kravchenko\wakeodessa\services\BrandServiceImpl.class
+com\kravchenko\wakeodessa\controllers\NewsController.class
 com\kravchenko\wakeodessa\exceptions\UserNotFoundException.class
+com\kravchenko\wakeodessa\services\NewsServiceImpl.class
+com\kravchenko\wakeodessa\services\NewsService.class
 com\kravchenko\wakeodessa\services\OrderContentServiceImpl.class
 com\kravchenko\wakeodessa\repositories\OrderContentRepository.class
 com\kravchenko\wakeodessa\controllers\ProductController.class

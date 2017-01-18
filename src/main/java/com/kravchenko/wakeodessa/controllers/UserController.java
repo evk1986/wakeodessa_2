@@ -13,14 +13,13 @@ import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
+import java.security.Principal;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -53,23 +52,28 @@ public class UserController {
     @Autowired
     UserSecurityService securityService;
 
-    @RequestMapping(value = "/user/user-profile", method = RequestMethod.GET)
-    public String getUserProfile(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        /*User user =
-                (User) SecurityContextHolder.getContext()
-                        .getAuthentication().getPrincipal();*/
-        String name = auth.getName(); //get logged in username
-        System.out.println(name);
-        User user = uds.findByLogin(name);
-        List<Order> orders = new ArrayList<>();
+    @RequestMapping(value = "/user/user_profile", method = RequestMethod.GET)
+    public String getUserProfile(Model model, Principal principal) {
+        Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Order> orders;
+        if (user instanceof User) {
+            /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();*/
+            String name = ((User) user).getLogin();
+            User currentUser = uds.findByLogin(name);
+            System.out.println("CURRENT NAME OF USER! :   " + name);
+            model.addAttribute("user", currentUser);
+            orders = os.findAllByOrderByUserByLogin(currentUser.getLogin());
+            model.addAttribute("orders", orders);
 
-        if (user != null) {
-            orders = os.findAllByOrderByUserByLogin(user.getLogin());
+        }
+        if (user instanceof org.springframework.security.core.userdetails.User) {
+            User currentUser = uds.findByLogin(((org.springframework.security.core.userdetails.User) user).getUsername());
+            model.addAttribute("user", currentUser);
+            System.out.println("CURRENT NAME OF USER Security User :   " + ((org.springframework.security.core.userdetails.User) user).getUsername());
+            orders = os.findAllByOrderByUserByLogin(((org.springframework.security.core.userdetails.User) user).getUsername());
             model.addAttribute("orders", orders);
         }
-       // System.out.println(orders.toString());
-        model.addAttribute("user", user);
+
         return "user_profile";
     }
 
@@ -104,9 +108,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/forget_password", method = RequestMethod.GET)
-    public String resetPassword(HttpServletRequest request,
-                                Model model) {
-
+    public String resetPassword() {
         return "forgetPassword";
 
     }

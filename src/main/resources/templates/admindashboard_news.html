@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Admin dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/admin.css}"
+          href="/css/admin.css"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/pagination.css}"
+          href="/css/pagination.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+    <!--Text framework-->
+    <script src="/js/tinymce/js/tinymce/tinymce.min.js"
+            th:src="@{/js/tinymce/js/tinymce/tinymce.min.js}"></script>
+    <script>
+        /*init the framework and check some options*/
+        tinymce.init({
+            selector: '#myText',
+            plugin: 'a_tinymce_plugin',
+            a_plugin_option: true,
+
+            width: 600,
+            height: 300,
+            a_configuration_option: 400,
+
+        });
+      /*  $(document).on('focusin', function (e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        });*/
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
+
+    <!--/*@thymesVar id="users" type="java.util.List<com.kravchenko.wakeodessa.domains.User>"*/-->
+</head>
+<body>
+<div class="wrap">
+    <nav class="nav-bar navbar-inverse" role="navigation">
+        <div id="top-menu" class="container-fluid active">
+            <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
+            <ul class="nav navbar-nav">
+                <form id="qform" class="navbar-form pull-left" role="search">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                </form>
+                <li class="dropdown movable">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
+                            class="fa fa-4x fa-child"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
+                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <aside id="side-menu" class="aside" role="navigation">
+        <ul class="nav nav-list accordion">
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-globe"></i>Portal<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="#" th:href="@{'/admin/addbrand'}">Brands</a></li>
+                    <li><a href="#" th:href="@{'/admin/addProduct'}">Products</a></li>
+                    <li><a href="/admin/admin-dashboard/orders">Orders</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-users" onfocus="true" th:autofocus="true"></i>Users<i
+                        class="fa fa-chevron-down"></i></div>
+                <ul class="submenu" onfocus="true" th:autofocus="true">
+                    <li><a href="/admin/admin-dashboard/users">Users</a></li>
+                    <li><a href="/registration">New User</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-file-image-o"></i>Reports<i class="fa fa-chevron-down"></i>
+                </div>
+                <ul class="submenu">
+                    <li><a href="#">Entries</a></li>
+                    <li><a href="#">Redirects</a></li>
+                    <li><a href="#">Pingbacks</a></li>
+                    <li><a href="#">Tags</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <!--Body content-->
+    <div class="content">
+        <div class="top-bar">
+            <a href="" class="side-menu-link burger">
+                <span class='burger_inside' id='bgrOne'></span>
+                <span class='burger_inside' id='bgrTwo'></span>
+                <span class='burger_inside' id='bgrThree'></span>
+            </a>
+        </div>
+        <div id="news">
+            <!--/*@thymesVar id="news" type="com.kravchenko.wakeodessa.domains.News"*/-->
+            <form class="form-horizontal" th:object="${news}" th:action="@{'/admin/admin-dashboard/add_new_news'}"
+                  enctype="multipart/form-data"
+                  method="post" th:method="post">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Add new news</legend>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textarea">Title</label>
+                        <div class="col-md-4">
+                            <textarea  id="textarea" name="title"
+                                       th:field="${news.title}">default text</textarea>
+                        </div>
+                    </div>
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="myText">Text body</label>
+                        <div class="col-md-4">
+                            <textarea  id="myText" name="textarea"
+                                      th:field="${news.information}">default text</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="image">Upload picture</label>
+                        <div class="col-md-4">
+                            <input id="image" name="image" class="input-file" type="file"/>
+                            <!-- <div id="wrapper" style="margin-top: 20px;">
+                                 <div id="image-holder"></div>
+                             </div>-->
+                        </div>
+                    </div>
+                    <!--Buttons-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ok">Double Button</label>
+                        <div class="col-md-8">
+                            <button id="ok" name="button1id" class="btn btn-success" type="submit">Add Post</button>
+                            <button id="reset" name="button2id" class="btn btn-danger" type="reset">Reset post</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

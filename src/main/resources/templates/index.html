@@ -5,17 +5,11 @@
 
 <head>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="text/html; charset=UTF-8"/>
     <meta name="viewport" th:name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <link href="webjars/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>
-    <!-- <link href="webjars/css/main.css"
-           th:href="@{/css/main.css}"
-           rel="stylesheet" media="screen"/>-->
     <link href="webjars/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
@@ -29,14 +23,12 @@
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
-
-    <header th:replace="fragment :: header"></header>
 </head>
-
 <body>
+<header th:replace="fragment :: header"></header>
 
 <div class="header-video">
-    <video autoplay="true" loop="true" muted="" style="width:100%; height: auto; position: absolute; ">
+    <video id="video-player" autoplay="true" loop="true" muted="" style="width:100%; height: auto; position: absolute; ">
         <source th:src="@{resource/img/1.mp4}" type="video/mp4"/>
     </video>
     <div class="container" style=" width: 100%;padding-left:0px ;padding-right: 0px;margin-top: 3px;">
@@ -52,10 +44,9 @@
 </div>
 <!--блок описания и фото райдеров-->
 <div class="team-container">
-
     <div class="container">
         <h2>Team Riders</h2>
-        <p>Native spot<em> <a th:href="@{'http://chernomorskiy.com.ua/'}" target="_blank">"Wakepark
+        <p>Native spot<em> <a th:href="@{'//chernomorskiy.com.ua/'}" target="_blank">"Wakepark
             Chernomorskiy"</a></em></p>
         <div class="row">
 
@@ -64,7 +55,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/lex.jpg}" src="../static/img/lex.jpg"/>
                     </div>
-                    <div class="img-information ">
+                    <div class="img-desc">
                         <a href="www.facebook.com/syntetich">Aleey Mamushev</a>
                         <p> Lex живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -77,7 +68,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
-                    <div class="img-information ">
+                    <div class="img-desc">
                         <a href="www.facebook.com/syntetich">Egor Kravchenko</a>
                         <p> Egor живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -93,7 +84,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
                     </div>
-                    <div class="img-information ">
+                    <div class="img-desc ">
                         <a href="http://www.google.com"> Каплан Димa</a>
                         <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
@@ -105,7 +96,7 @@
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
-                    <div class="img-information">
+                    <div class="img-desc">
                         <a href="www.facebook.com/kaplan"> Каплан Димa</a>
                         <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7

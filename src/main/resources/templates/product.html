@@ -10,20 +10,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
     <link href="/static/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
-    <link th:href="@{/css/shop-item.css}"
-          href="/css/shop-item.css"
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link th:href="@{/css/main.css}"
+          href="webjars/css/main.css"
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <script src="/js/admin.js"
-            th:src="@{/js/admin.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
+
+
+   <!-- <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>-->
+    <link th:href="@{/css/shop-item.css}"
+          href="/css/shop-item.css"
+          rel="stylesheet" media="screen"/>
+ <!--   <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
+  <!--  <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>-->
 
     <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 </head>

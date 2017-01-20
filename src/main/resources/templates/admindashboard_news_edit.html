@@ -17,10 +17,32 @@
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script src="/js/admin.js"
             th:src="@{/js/admin.js}"></script>
-    <!--Pagination framework-->
-
+    <!--Text framework-->
+    <script src="/js/tinymce/js/tinymce/tinymce.min.js"
+            th:src="@{/js/tinymce/js/tinymce/tinymce.min.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
             th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
+    <script>
+
+        /*init the framework and check some options*/
+        /* tinymce.init({
+         selector: '#myText',
+         plugin: 'a_tinymce_plugin',
+         a_plugin_option: true,
+
+         width: 600,
+         height: 300,
+         a_configuration_option: 400,
+
+         });*/
+        /*  $(document).on('focusin', function (e) {
+         if ($(e.target).closest(".mce-window").length) {
+         e.stopImmediatePropagation();
+         }
+         });*/
+
+    </script>
+
 
     <!--/*@thymesVar id="users" type="java.util.List<com.kravchenko.wakeodessa.domains.User>"*/-->
 </head>
@@ -90,49 +112,55 @@
 
     <!--Body content-->
     <div class="content">
-        <div class="top-bar">
-            <a href="" class="side-menu-link burger">
-                <span class='burger_inside' id='bgrOne'></span>
-                <span class='burger_inside' id='bgrTwo'></span>
-                <span class='burger_inside' id='bgrThree'></span>
-            </a>
-        </div>
-        <div id="orders">
+        <div id="news" style="padding-left: 20px;">
             <section class="content-inner">
                 <p class="text-center"><em>Administration dashboard wakeodessacrew website! welcome back! :) </em></p>
                 <img src="/img/logo.png" th:src="@{/img/logo.png}" class="center-block"/>
+                <legend class="center-block">Pick some news to edit</legend>
 
-
-                <!--/*@thymesVar id="orders" type="java.util.List<com.kravchenko.wakeodessa.domains.Order>"*/-->
-                <table class="table table-striped" th:object="${orders}">
-                   <!-- <input class="search" placeholder="Search" />
-                    <button class="sort" data-sort="id">Sort by user</button>-->
+                <!--/*@thymesVar id="allnews" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
+                <table class="table table-striped" th:object="${allnews}">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Date</th>
-                        <th>User</th>
-                        <th>Delivery Adress</th>
-                        <th>Product</th>
-                        <th>User mobile</th>
-                        <th>Total price</th>
+                        <th>Title</th>
+                        <th>Controls</th>
                     </tr>
                     </thead>
                     <tbody class="list">
-                    <tr th:each="order : ${orders}">
-                        <td th:text="${order.getOrderId()}"></td>
-                        <td th:text="${order.getDate()}"></td>
-                        <td th:text="${order.getUser().login}"></td>
-                        <td th:text="${order.getAdress()}"></td>
-                        <td th:text="${order.orderProducts}"></td>
-                        <td th:text="${order.getMobile()}"></td>
-                        <td th:text="${order.getMobile()}"></td>
+                    <tr th:each="news : ${allnews}">
+                        <td th:text="${news.newsId}"></td>
+                        <td th:text="${news.creationDate}"></td>
+                        <td th:text="${news.title}"></td>
+                        <td>
+                            <form id="form" name="form"
+                                  th:action="@{'/admin/admin-dashboard/news/edit/'+${news.newsId}}"
+                                  method="get">
+                                <div class="text-center pull-left">
+                                    <button style="background:#404040" class="mybtn btn btn-primary btn-lg " id="edit">
+                                        Edit
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <form id="deleteForm" name="delete"
+                                  th:action="@{'/admin/admin-dashboard/news/delete/'+${news.newsId}}"
+                                  method="get">
+                                <div class="text-center pull-left">
+                                    <button style="background:#404040" type="submit"
+                                            class="btn btn-danger btn-lg mybtn">Delete
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                     </tbody>
                     <ul class="pagination center-block">
                         <li><a href="#">«</a></li>
                         <li><a class="active" href="#">1</a></li>
-                        <li><a  href="#">2</a></li>
+                        <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
@@ -144,13 +172,13 @@
                             th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
                     <script th:inline="javascript">
                         var options = {
-                            valueNames: ['id', 'date', 'user', 'deliveri adress', 'product', 'user mobile', 'total price'],
-                            page: 5,
+                            valueNames: ['ID', 'Date', 'Title', 'Controls'],
+                            page: 2,
                             plugins: [
                                 ListPagination({})
                             ]
                         };
-                        var ordersList = new List('orders', options);
+                        var allNewsList = new List('news', options);
                     </script>
                 </table>
             </section>

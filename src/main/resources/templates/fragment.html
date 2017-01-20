@@ -5,12 +5,6 @@
     <link href="webjars/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
-    <!-- <link href="webjars/css/main.css"
-           th:href="@{/css/main.css}"
-           rel="stylesheet" media="screen"/>-->
-<!--    <link href="webjars/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>-->
     <link th:href="@{/css/main.css}"
           href="webjars/css/main.css"
           rel="stylesheet" media="screen"/>
@@ -26,7 +20,9 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="/"><img th:src="@{/resource/img/logo.png}" src=""/></a>
+                <a class="navbar-brand" href="/">
+                    <img id="logo" th:src="@{/resource/img/logo.png}" src=""/>
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -36,7 +32,7 @@
                         <a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Wake spots
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color:white; opacity:0.5">
-                            <li><a href="#" th:href="@{'chernomorskiy.com.ua'}" style="font-weight:600;">CWP</a></li>
+                            <li><a href="#" th:href="@{'\\chernomorskiy.com.ua'}" style="font-weight:600;">CWP</a></li>
                             <li><a href="#" style="font-weight:600;">YWP</a></li>
                         </ul>
                     </li>

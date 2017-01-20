@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -37,7 +34,6 @@ public class AdminDashboardContoller {
 
     @RequestMapping(value = "/admin-dashboard", method = RequestMethod.GET)
     public String getAdminDashboard1(Model model) throws IOException {
-
         return "admindashboard";
     }
 
@@ -54,19 +50,9 @@ public class AdminDashboardContoller {
         return "admindashboard_orders";
     }
 
-    /*
-    @ResponseBody
-    @RequestMapping(value = "/admin-dashboard/orders/{orderId}",method = RequestMethod.GET)
-    public String getAllOrders(@PathVariable(value = "orderId") Integer orderId,
-                               Model model) throws IOException {
-        Order currentOrder = os.findById(orderId);
-       List<OrderContent> orderContent = currentOrder.getOrderProducts();
 
-
-        return orderProduct;
-    }*/
     @RequestMapping(value = "/admin-dashboard/news", method = RequestMethod.GET)
-    public String getAdminDashboardAddNewPost(Model model) {
+    public String getAdminDashboardAddNewNewsPage(Model model) {
         News news = new News();
         model.addAttribute("news", news);
         /*model.addAttribute("users", us.getAll());*/
@@ -74,10 +60,10 @@ public class AdminDashboardContoller {
     }
 
     @RequestMapping(value = "/admin-dashboard/add_new_news", method = RequestMethod.POST)
-    public String addNewBrand(Model model,
-                              @ModelAttribute(value = "news") @Valid News news,
-                              BindingResult bindingResult,
-                              @RequestParam("image") MultipartFile multipartFile)
+    public String postAdminDashboardAddNewNews(Model model,
+                          @ModelAttribute(value = "news") @Valid News news,
+                          BindingResult bindingResult,
+                          @RequestParam("image") MultipartFile multipartFile)
             throws IOException {
         News currentNews = new News();
         currentNews.setInformation(news.getInformation());
@@ -92,5 +78,19 @@ public class AdminDashboardContoller {
     }
 
 
+    @RequestMapping(value = "/admin-dashboard/news/edit", method = RequestMethod.GET)
+    public String editNews(Model model)
+            throws IOException {
+        List<News> allnews = newsService.findAll();
+        model.addAttribute("allnews", allnews);
+        return "admindashboard_news_edit";
+    }
 
+    @RequestMapping(value = "/admin-dashboard/news/delete/{newsId}", method = RequestMethod.GET)
+    public String deleteCurrentNewsPost(@PathVariable("newsId") Integer newsId, Model uiModel) {
+        newsService.delete(newsId);
+        List<News> allnews = newsService.findAll();
+        uiModel.addAttribute("allnews", allnews);
+        return "admindashboard_news_edit";
+    }
 }

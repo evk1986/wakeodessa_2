@@ -6,66 +6,79 @@
     <meta charset="UTF-8"/>
     <title>Main Page WoC</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" th:name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
     <link href="/static/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
-    <script src="/static/js/jquery-3.1.1.min.js"
-            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <!--  <link href="/css/news.css"
-            th:href="@{/css/news.css}"
-            rel="stylesheet" media="screen"/>-->
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
-          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
           th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link th:href="@{/css/main.css}"
+          href="webjars/css/main.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
     <style>
         body, h1, h2, h3, h4, h5, h6 {
             font-family: "Raleway", sans-serif
         }
-
-        .w3-sidenav a, .w3-sidenav h4 {
-            font-weight: bold
-        }
     </style>
-
 </head>
-<body class="w3-light-grey w3-content" style="max-width:1600px">
-<section class="navbar-header">
-    <header th:replace="fragment :: header"></header>
-</section>
-<!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
-<header class="w3-container w3-center w3-padding-32">
-    <h1><b>MY BLOG</b></h1>
-    <p>Welcome to the blog of <span class="w3-tag">unknown</span></p>
-</header>
+<body>
+<header id="header" th:replace="fragment :: header"></header>
+<div class="w3-container w3-center w3-padding-32 w3-margin">
+    <h1><b>Wake News</b></h1>
+    <p><span class="w3-tag">WAKEODESSACREW</span></p>
+</div>
 
 <!-- Grid -->
 <div class="w3-row">
     <!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
     <!-- Blog entries -->
-    <div class="w3-col l5 s10" th:each="maNews:*{newses}">
+    <div class="w3-col l6 s12" th:each="maNews:*{newses}">
         <!-- Blog entry -->
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var id =
+            /*[[${maNews.newsId}]]*/
+            var currentUrl = location.pathname;
+            function Red() {
+                location.pathname = currentUrl + '/' + id;
+            }
+
+            /*]]>*/
+        </script>
         <div class="w3-card-4 w3-margin w3-white">
-            <img style="width:35%; height: auto " src="#" th:src="@{'/news/image/'+${maNews.newsId}}" alt="Nature"/>
-            <div class="w3-container w3-padding-8">
+            <img class="img-responsive img-thumbnail center-block" style="width:35%; height: 100%" src="#"
+                 th:src="@{'/news/image/'+${maNews.newsId}}" alt="News"/>
+            <div class="w3-container">
                 <h3 th:text="${maNews.title}"><b>TITLE HEADING</b></h3>
-                <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span></h5>
             </div>
 
-            <div class="w3-container">
-                <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
-                    placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non
-                    congue ullam corper. Praesent tincidunt sed
-                    tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
-                    fringilla.</p>
+
+            <div class="w3-container w3-padding-8" style="height: 30%; width: auto">
+                <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span></h5>
+            </div>
+            <div class="w3-container" id="info-box">
+                <p th:utext="${maNews.information}">
+                    Information
+                </p>
+            </div>
+            <div class="w3-container" style="padding-top: 15px;">
                 <div class="w3-row">
                     <div class="w3-col m8 s12">
                         <p>
-                            <button th:onclick="'location.href=/news/'+${maNews.getNewsId()}"
+                            <button onclick="Red();"
                                     class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ
                                 MORE »</b></button>
-
                         </p>
                     </div>
                     <div class="w3-col m4 w3-hide-small">
@@ -74,8 +87,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <hr></hr>
+        <!--<hr></hr>-->
     </div>
 </div>
 

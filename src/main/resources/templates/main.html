@@ -9,21 +9,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}" />
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-
+    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}"/>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
     <link href="/static/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link th:href="@{/css/main.css}"
+          href="webjars/css/main.css"
+          rel="stylesheet" media="screen"/>
+
     <link th:href="@{/css/shop-homepage.css}"
           href="/css/shop-homepage.css"
           rel="stylesheet" media="screen"/>
+
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <script src="/js/admin.js"
-            th:src="@{/js/admin.js}"></script>
-
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
 </head>
 
 <body>
@@ -66,7 +79,8 @@
         <div class="col-md-3" id="categories" th:fragment="categories">
             <p class="lead">Shop Name</p>
             <div class="list-group">
-                <a href=""  th:href="@{'/shop/main/'+${categories.getDisplayedName().toLowerCase()}}" class="list-group-item"
+                <a href="" th:href="@{'/shop/main/'+${categories.getDisplayedName().toLowerCase()}}"
+                   class="list-group-item"
                    th:each="categories : ${T(com.kravchenko.wakeodessa.domains.Categori).values}"
                    th:value="${categories}"
                    th:text="${categories.getDisplayedName()}"></a>
@@ -76,7 +90,7 @@
 
         <div class="col-md-9">
 
-            <div class="row carousel-holder">
+            <div class="row carousel-holder" id="carousel">
 
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -112,10 +126,10 @@
                 <!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
                 <div class="col-sm-4 col-lg-4 col-md-4" th:if="${products.size()==0}">
                     <h4 style="align-content: center"> No products available </h4>
-                    </div>
+                </div>
                 <div class="col-sm-4 col-lg-4 col-md-4"
                      th:each="product : ${products}"
-                id="products">
+                     id="products">
                     <div class="thumbnail">
                         <a th:href="@{'/shop/main/product/'+${product.getProduct_id()}}">
                             <img th:src="@{'/shop/main/get_product_image/image/'+${product.getProduct_id()}}" alt=""/>
@@ -144,19 +158,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- <div class="col-sm-4 col-lg-4 col-md-4">
-                     <h4><a href="#">Like this template?</a>
-                     </h4>
-                     <p>If you like this template, then check out <a target="_blank"
-                                                                     href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/main.html">this
-                         tutorial</a> on how to build a working review system for your online store!</p>
-                     <a class="btn btn-primary" target="_blank"
-                        href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/main.html">View
-                         Tutorial</a>
-                 </div>-->
-
             </div>
 
         </div>

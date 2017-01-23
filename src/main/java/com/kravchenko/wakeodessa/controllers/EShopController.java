@@ -109,9 +109,8 @@ public class EShopController {
             uiModel.addAttribute("user", user);
             uiModel.addAttribute("productId", productId);
             return "confirm_order";
-
         } else {
-            return "succes_form";
+            return "login";
         }
 
     }
@@ -120,33 +119,35 @@ public class EShopController {
     public String postOrder(@PathVariable(value = "userId") Integer userId,
                             @PathVariable(value = "productId") Integer productId,
                             @ModelAttribute(value = "order") @Valid Order order,
+                            @ModelAttribute(value = "user") User user,
                             BindingResult bindingResult,
                             HttpServletRequest req,
                             Model uiModel) {
 
-        String name = req.getUserPrincipal().getName();
-        User user = uds.findByLogin(name);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = uds.findByLogin(auth.getName());
+        System.out.println(currentUser.toString());
         OrderContent oc = new OrderContent();
         Product currentProd = productService.find(productId);
         oc.setProduct(currentProd);
         oc.setOrderId(order);
-
         List<OrderContent> loc = new ArrayList<OrderContent>();
         loc.add(oc);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
-
+        currentUser.setTelNumber(user.getTelNumber());
+        currentUser.setHomeAdress(user.getHomeAdress());
         order.setOrderProducts(loc);
-        order.setUser(user);
+        order.setUser(currentUser);
         order.setDate(date);
+        order.setMobile(currentUser.getTelNumber());
+        order.setAdress(currentUser.getHomeAdress());
         System.out.println(order.toString());
-
-        uds.save(user);
+        uds.save(currentUser);
         orderService.save(order);
         orderContentService.save(oc);
         System.out.println(order.toString());
-
         return "succes_form";
     }
 

@@ -57,9 +57,7 @@ body {
     color: #333;
 }
 
-footer {
-    margin: 50px 0;
-}
+
 
 @media all and (max-width: 630px){
     #carousel{

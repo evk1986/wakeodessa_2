@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Page WoC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" th:name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link th:href="@{/css/main.css}"
+          href="webjars/css/main.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+<header id="header" th:replace="fragment :: header"></header>
+<!-- Grid -->
+<div class="w3-row">
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12 news-body" style="margin-left: 17%; margin-right: auto;">
+        <div class="w3-card-24 w3-white">
+            <!--/*@thymesVar id="news" type="com.kravchenko.wakeodessa.domains.News"*/-->
+            <div class="w3-container w3-center w3-padding-32 w3-margin">
+                <h1 th:text="${news.title}"><b>Header news</b></h1>
+                <p><span class="w3-tag" th:text="${news.creationDate}">DATE</span></p>
+            </div>
+            <div class="w3-container w3-left w3-padding-32 w3-margin">
+                <img class="img-responsive img-thumbnail " style="display: inline-block; width: 356px;height: 241px;"
+                     src="#"
+                     th:src="@{'/news/image/'+${news.newsId}}" alt="News"/>
+            </div>
+            <div class="w3-container">
+                <p th:utext="${news.information}"><b>TITLE HEADING</b></p>
+            </div>
+        </div>
+        <!--<hr></hr>-->
+    </div>
+</div>
+<footer th:replace="index :: footerok"></footer>
+</body>
+</html>

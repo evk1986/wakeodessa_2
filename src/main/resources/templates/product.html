@@ -34,25 +34,25 @@
     </style>
 
 
-   <!-- <link href="/static/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>-->
+    <!-- <link href="/static/css/bootstrap.min.css"
+           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+           rel="stylesheet" media="screen"/>-->
     <link th:href="@{/css/shop-item.css}"
           href="/css/shop-item.css"
           rel="stylesheet" media="screen"/>
- <!--   <script src="/static/js/jquery-3.1.1.min.js"
-            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
-  <!--  <script src="/js/admin.js"
-            th:src="@{/js/admin.js}"></script>-->
+    <!--   <script src="/static/js/jquery-3.1.1.min.js"
+               th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
+    <!--  <script src="/js/admin.js"
+              th:src="@{/js/admin.js}"></script>-->
 
     <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 </head>
 
 <body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<header th:replace="fragment :: header"></header>
+<!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
@@ -63,7 +63,7 @@
             </button>
             <a class="navbar-brand" href="/">WOC HOME</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
@@ -74,10 +74,10 @@
                 </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
+        &lt;!&ndash; /.navbar-collapse &ndash;&gt;
     </div>
-    <!-- /.container -->
-</nav>
+    &lt;!&ndash; /.container &ndash;&gt;
+</nav>-->
 <!-- Page Content -->
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 <div class="container" th:object="${product}">
@@ -85,14 +85,6 @@
     <div class="row">
 
         <div class="col-md-3" th:replace="main :: categories">
-            <!--<p class="lead">Shop Name</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item"
-                   th:each="categories : ${T(com.kravchenko.wakeodessa.domains.Categori).values}"
-                   th:value="${categories}"
-                   th:text="${categories.getDisplayedName()}"></a>
-
-            </div>-->
         </div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{'http://localhost:8080/shop/main/'}">Home</a></li>
@@ -117,6 +109,9 @@
                                     class="glyphicon glyphicon-shopping-cart">   Buy</span>
                             </button>
                         </form>
+                    </th:block>
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <p><em>To continue shopping - login please! <smile>:-)</smile></em></p>
                     </th:block>
 
 

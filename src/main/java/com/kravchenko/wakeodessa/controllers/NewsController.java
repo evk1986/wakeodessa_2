@@ -5,10 +5,7 @@ import com.kravchenko.wakeodessa.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,6 +26,15 @@ public class NewsController {
         model.addAttribute("newses", newses);
         //добавить в модель новости все
         return "news_page";
+    }
+
+    @RequestMapping(value = "/news_page/{id}", method = RequestMethod.GET)
+    public String getNewsDirectPagebyId(Model model,
+                                        @PathVariable(name = "id") Integer id) {
+        /*выборка из базы данных*/
+        News news = newsService.find(id);
+        model.addAttribute("news", news);
+        return "news_page_direct";
     }
 
     @ResponseBody()

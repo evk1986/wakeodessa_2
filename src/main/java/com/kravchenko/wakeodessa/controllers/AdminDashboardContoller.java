@@ -2,6 +2,8 @@ package com.kravchenko.wakeodessa.controllers;
 
 import com.kravchenko.wakeodessa.domains.News;
 import com.kravchenko.wakeodessa.domains.Order;
+import com.kravchenko.wakeodessa.domains.Photo;
+import com.kravchenko.wakeodessa.services.GalleryService;
 import com.kravchenko.wakeodessa.services.NewsService;
 import com.kravchenko.wakeodessa.services.OrderService;
 import com.kravchenko.wakeodessa.services.UserService;
@@ -30,6 +32,9 @@ public class AdminDashboardContoller {
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    GalleryService gs;
 
 
     @RequestMapping(value = "/admin-dashboard", method = RequestMethod.GET)
@@ -61,9 +66,9 @@ public class AdminDashboardContoller {
 
     @RequestMapping(value = "/admin-dashboard/add_new_news", method = RequestMethod.POST)
     public String postAdminDashboardAddNewNews(Model model,
-                          @ModelAttribute(value = "news") @Valid News news,
-                          BindingResult bindingResult,
-                          @RequestParam("image") MultipartFile multipartFile)
+                                               @ModelAttribute(value = "news") @Valid News news,
+                                               BindingResult bindingResult,
+                                               @RequestParam("image") MultipartFile multipartFile)
             throws IOException {
         News currentNews = new News();
         currentNews.setInformation(news.getInformation());
@@ -92,5 +97,27 @@ public class AdminDashboardContoller {
         List<News> allnews = newsService.findAll();
         uiModel.addAttribute("allnews", allnews);
         return "admindashboard_news_edit";
+    }
+
+    @RequestMapping(value = "/admin-dashboard/gallery/add_new_photos", method = RequestMethod.GET)
+    public String getGalleryView(Model model) {
+        Photo photo = new Photo();
+        model.addAttribute("photo", photo);
+        return "admindashboard_gallery_addphoto";
+    }
+
+    @RequestMapping(value = "/admin-dashboard/savePhoto", method = RequestMethod.POST)
+    public String saveNewPhoto(Model model, @ModelAttribute(value = "photo") Photo photo,
+                               @RequestParam("image") MultipartFile multipartFile)
+            throws IOException {
+
+        if (multipartFile != null && !multipartFile.isEmpty()) {
+            byte[] file = multipartFile.getBytes();
+            photo.setPicture(file);
+        }
+        System.out.println(photo.getInfo());
+        gs.save(photo);
+        System.out.println(photo.toString());
+        return "admindashboard";
     }
 }

@@ -173,7 +173,7 @@ public class UserController {
       /*  String message = messages.getMessage("message.resetPassword",
                 null, locale);*/
         String message = "Вы получили етот e-mail, так кто-то совершил " +
-                "действие по восстановления пароля на сайте woc.od.ua. " +
+                "действие по восстановлению пароля на сайте woc.od.ua. " +
                 "Если єто не вы, никак не реагируйте на ето письмо. " +
                 "Для восстановления пароля перейдите по ссылке:";
         return constructEmail("Reset Password", message + " \r\n" + url, user);

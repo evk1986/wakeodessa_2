@@ -9,7 +9,8 @@
     <meta name="viewport" th:name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
     <link href="webjars/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
@@ -20,27 +21,17 @@
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script src="webjars/js/bootstrap.min.js"
             th:src="@{/js/bootstrap.min.js}"></script>
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
 </head>
-<body>
+<body class="w3-light-grey">
 <header th:replace="fragment :: header"></header>
-
 <div class="header-video">
-    <video id="video-player" autoplay="true" loop="true" muted="" style="width:100%; height: auto; position: absolute; ">
+    <video id="video-player" autoplay="true" loop="true" muted=""
+           style="width:100%; height: auto; position: absolute; ">
         <source th:src="@{resource/img/1.mp4}" type="video/mp4"/>
     </video>
-    <div class="container" style=" width: 100%;padding-left:0px ;padding-right: 0px;margin-top: 3px;">
-        <div class="nav">
-            <ul class="pull-left">
 
-            </ul>
-            <ul class="pull-right">
-                <!--  сюда добавить нав бар -->
-            </ul>
-        </div>
-    </div>
 </div>
 <!--блок описания и фото райдеров-->
 <div class="team-container">
@@ -48,10 +39,11 @@
         <h2>Team Riders</h2>
         <p>Native spot<em> <a th:href="@{'//chernomorskiy.com.ua/'}" target="_blank">"Wakepark
             Chernomorskiy"</a></em></p>
-        <div class="row">
+        <div class="row" style="align-items: center">
 
-            <div class="col-md-4">
-                <div class="block">
+            <div class="col-md-6">
+
+                <div class="block w3-margin">
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/lex.jpg}" src="../static/img/lex.jpg"/>
                     </div>
@@ -62,9 +54,7 @@
                         </p>
                     </div>
                 </div>
-
-
-                <div class="block">
+                <div class="block w3-margin">
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
@@ -75,12 +65,7 @@
                         </p>
                     </div>
                 </div>
-
-
-            </div>
-            <div class="col-md-4">
-
-                <div class="block">
+                <div class="block w3-margin" >
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
                     </div>
@@ -92,12 +77,40 @@
                     </div>
                 </div>
 
-                <div class="block">
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="block w3-margin" >
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
+                    </div>
+                    <div class="img-desc ">
+                        <a href="http://www.google.com"> Каплан Димa</a>
+                        <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block w3-margin">
                     <div class="thumbnail img">
                         <img th:src="@{resource/img/egor.jpg}" src="../static/img/egor.jpg"/>
                     </div>
                     <div class="img-desc">
                         <a href="www.facebook.com/kaplan"> Каплан Димa</a>
+                        <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
+                            Любимый трик BSTS7
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block w3-margin" >
+                    <div class="thumbnail img">
+                        <img th:src="@{resource/img/kaplan.jpg}" src="../static/img/kaplan.jpg"/>
+                    </div>
+                    <div class="img-desc ">
+                        <a href="http://www.google.com"> Каплан Димa</a>
                         <p> Димон живет и катает в Одессе. Является официальным представителем марки Trasher в Одессе.
                             Любимый трик BSTS7
                         </p>
@@ -111,12 +124,10 @@
     </div>
 
 
-    <footer style="height:10%;">
+    <footer th:fragment="footerok" style="height:10%; color: white; background: black">
         <div class="col-lg-12">
             <p>Copyright &copy; Egor Kravchenko 2016</p>
-
         </div>
-
     </footer>
 
 

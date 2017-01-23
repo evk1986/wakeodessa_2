@@ -39,7 +39,7 @@ public class Order implements Serializable {
     }
 
     @Column
-    private int mobile;
+    private String mobile;
 
     @Column
     private String adress;
@@ -54,11 +54,11 @@ public class Order implements Serializable {
         this.orderProducts = orderProducts;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 

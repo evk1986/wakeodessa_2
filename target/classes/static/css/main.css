@@ -12,7 +12,7 @@
     position: relative;
     padding-bottom: 56.25%;
     max-width: 100%;
-    height: 45%;
+    height: auto;
     z-index: 1;
 }
 
@@ -59,6 +59,19 @@ footer {
         z-index: 100;
     }
 
+    .header img#logo {
+        visibility: hidden;
+        display: none;
+    }
+
+    .news-body{
+       margin: 0;
+    }
+
+    .header-video #video-player {
+        display: none;
+    }
+
     /* #modileSearchBar h5 {
     visibility: visible;
   }
@@ -98,43 +111,32 @@ footer {
     z-index: 100;
 }
 
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
+/*
 
-/* Modal Content/Box */
+!* Modal Content/Box *!
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto; !* 15% from the top and centered *!
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; !* Could be more or less, depending on screen size *!
 }
 
-/* The Close Button */
+!* The Close Button *!
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
+*/
+/*
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
+}*/
 
 .mybtn {
     background: #404040
@@ -273,7 +275,6 @@ footer .col-md-8 {
 .img-desc {
     color: #ffffff;
     width: inherit;
-
     background-color: rgba(35, 35, 35, 0.74);
     position: absolute;
     top: 0%;
@@ -312,6 +313,28 @@ footer .col-md-8 {
 
 #2 {
     display: inline
+}
+
+.info-box {
+    /*width: 750px;
+
+    font-size: 16px;
+    font-weight: 300;*/
+    height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+
+}
+
+#fix-card {
+    width: 450px;; /* or whatever width you want. */
+    max-width: 450px; /* or whatever width you want. */
+    height: 500px;
+    max-height: 500px;
+    display: inline-block;
 }
 
 

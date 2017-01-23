@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head lang="en">
+
+    <title>Admin dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="author" content=""/>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
+    <link href="/static/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/admin.css}"
+          href="/css/admin.css"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/pagination.css}"
+          href="/css/pagination.css"
+          rel="stylesheet" media="screen"/>
+    <script src="/static/js/jquery-3.1.1.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="/js/admin.js"
+            th:src="@{/js/admin.js}"></script>
+    <!--Text framework-->
+    <script src="/js/tinymce/js/tinymce/tinymce.min.js"
+            th:src="@{/js/tinymce/js/tinymce/tinymce.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        .w3-quarter img {
+            margin-bottom: -6px;
+            cursor: pointer
+        }
+
+        .w3-quarter img:hover {
+            opacity: 0.6;
+            transition: 0.3s
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="wrap">
+    <nav class="nav-bar navbar-inverse" role="navigation">
+        <div id="top-menu" class="container-fluid active">
+            <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
+            <ul class="nav navbar-nav">
+                <form id="qform" class="navbar-form pull-left" role="search">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                </form>
+                <li class="dropdown movable">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
+                            class="fa fa-4x fa-child"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
+                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar" th:replace="fragment::adminNav"></nav>
+
+    <!--Body content-->
+    <div class="content">
+        <div class="top-bar" style="margin-left: 13px;">
+            <a href="" class="side-menu-link burger">
+            </a>
+        </div>
+
+
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main w3-content" style="max-width:1600px;margin-top:15px;">
+            <!--/*@thymesVar id="photos" type="java.util.List<com.kravchenko.wakeodessa.domains.Photo>"*/-->
+            <div class="w3-row w3-grayscale-min">
+                <div id="photos">
+                    <ui class="list">
+                        <div class="w3-third" th:each="photo : ${photos}">
+                            <form th:method="post"
+                                  th:action="@{'/admin/admin-dashboard/gallery/edit/image/delete?id='+${photo.id}}">
+                                <img src="#" th:src="@{'/gallery/image/' + ${photo.id}}" style="width:100%"
+                                     onclick="onClick(this)"
+                                     alt="#" th:alt="${photo.info}" class="w3-margin w3-padding"/>
+                                <input class="w3-btn w3-hover-red center-block" type="submit" value="delete"/>
+                            </form>
+                        </div>
+                    </ui>
+                    <!-- Pagination -->
+                    <div class="w3-center w3-padding-32">
+                        <ul class="pagination w3-center w3-pagination">
+                            <li><a class="w3-black" href="#">1</a></li>
+                            <li><a class="w3-hover-black" href="#">2</a></li>
+                            <li><a class="w3-hover-black" href="#">3</a></li>
+                            <li><a class="w3-hover-black" href="#">4</a></li>
+                            <li><a class="w3-hover-black" href="#">»</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <script src="http://listjs.com/assets/javascripts/list.min.js"
+                        th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
+                <script th:inline="javascript">
+                    var options = {
+                        valueNames: ['id', 'info'],
+                        page: 3,
+                        plugins: [
+                            ListPagination({})
+                        ]
+                    };
+                    var photosList = new List('photos', options);
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

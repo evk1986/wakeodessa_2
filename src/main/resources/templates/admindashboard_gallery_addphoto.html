@@ -48,75 +48,32 @@
             </ul>
         </div>
     </nav>
-    <aside id="side-menu" class="aside" role="navigation">
-        <ul class="nav nav-list accordion">
-            <li class="nav-header">
-                <div class="link"><i class="fa fa-lg fa-globe"></i>Portal<i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    <li><a href="#" th:href="@{'/admin/addbrand'}">Brands</a></li>
-                    <li><a href="#" th:href="@{'/admin/addProduct'}">Products</a></li>
-                    <li><a href="/admin/admin-dashboard/orders">Orders</a></li>
-
-                </ul>
-            </li>
-            <li class="nav-header">
-                <div class="link"><i class="fa fa-lg fa-globe"></i>News<i class="fa fa-chevron-down"></i></div>
-                <ul class="submenu">
-                    <li><a href="#" th:href="@{'/admin/admin-dashboard/news'}">Add</a></li>
-                    <li><a href="#" th:href="@{'/admin/admin-dashboard/news/edit'}">Edit</a></li>
-                </ul>
-            </li>
-            <li class="nav-header">
-                <div class="link"><i class="fa fa-lg fa-users" onfocus="true" th:autofocus="true"></i>Users<i
-                        class="fa fa-chevron-down"></i></div>
-                <ul class="submenu" onfocus="true" th:autofocus="true">
-                    <li><a href="/admin/admin-dashboard/users">Users</a></li>
-                    <li><a href="/registration">New User</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-header">
-                <div class="link"><i class="fa fa-lg fa-file-image-o"></i>Reports<i class="fa fa-chevron-down"></i>
-                </div>
-                <ul class="submenu">
-                    <li><a href="#">Entries</a></li>
-                    <li><a href="#">Redirects</a></li>
-                    <li><a href="#">Pingbacks</a></li>
-                    <li><a href="#">Tags</a></li>
-                </ul>
-            </li>
-
-        </ul>
-    </aside>
+    <nav class="navbar" th:replace="fragment::adminNav"></nav>
 
     <!--Body content-->
     <div class="content">
-        <div class="top-bar">
+        <div class="top-bar" style="margin-left: 13px;">
             <a href="" class="side-menu-link burger">
-                <span class='burger_inside' id='bgrOne'></span>
-                <span class='burger_inside' id='bgrTwo'></span>
-                <span class='burger_inside' id='bgrThree'></span>
             </a>
         </div>
         <div id="news">
-
-            <form class="form-horizontal" th:action="@{'/admin/admin-dashboard/savePhoto'}"
+            <form style="margin-top: 30px;" class="form-horizontal" th:action="@{'/admin/admin-dashboard/savePhoto'}"
                   enctype="multipart/form-data"
                   method="post" th:method="post">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="info">Photo title</label>
                     <div class="col-md-4">
                         <!--/*@thymesVar id="photo" type="com.kravchenko.wakeodessa.domains.Photo"*/-->
-                        <textarea th:rows="10" th:field="${photo.info}"
+                        <textarea th:rows="3" th:field="${photo.info}"
                                   class="form-control" id="info" name="info"></textarea>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: block">
                     <label class="col-md-4 control-label" for="image">Image</label>
                     <div class="col-md-4">
                         <input id="image" name="image" class="input-file" type="file"/>
+                        <input id="ok" type="submit" value="Save" class="mybtn btn btn-info btn-success"/>
                     </div>
-                    <input id="ok" type="submit" value="Save" class="mybtn btn btn-info btn-success"/>
                 </div>
             </form>
 

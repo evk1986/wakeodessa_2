@@ -26,11 +26,24 @@
             th:src="@{/js/bootstrap.min.js}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
     <style>
         body, h1, h2, h3, h4, h5, h6 {
             font-family: "Raleway", sans-serif
         }
+
+        .w3-quarter img {
+            margin-bottom: -6px;
+            cursor: pointer
+        }
+
+        .w3-quarter img:hover {
+            opacity: 0.6;
+            transition: 0.3s
+        }
     </style>
+
 </head>
 <body class="w3-light-grey">
 <header id="header" th:replace="fragment :: header"></header>
@@ -41,55 +54,106 @@
 
 <!-- Grid -->
 <div class="w3-row">
-    <!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
-    <!-- Blog entries -->
-    <div class="w3-col l6 s12" th:each="maNews:*{newses}">
-        <!-- Blog entry -->
-        <script th:inline="javascript">
-            /*<![CDATA[*/
-            var id =
-            /*[[${maNews.newsId}]]*/
-            var currentUrl = location.pathname;
-            function Red() {
-                location.pathname = currentUrl + '/' + id;
-            }
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-card-24 w3-main w3-content" style="max-width:1600px;margin-top:83px">
+        <!--/*@thymesVar id="photos" type="java.util.List<com.kravchenko.wakeodessa.domains.Photo>"*/-->
+        <!-- Photo grid -->
+        <div class="w3-row w3-grayscale-min">
+            <div id="photos">
+                <ui class="list">
+                    <div class="w3-quarter w3-border" th:each="photo : ${photos}">
+                        <img src="#" th:src="@{'/gallery/image/' + ${photo.id}}" style="width:100%;height: 237px;"
+                             onclick="onClick(this)"
+                             alt="#" th:alt="${photo.info}"/>
+                    </div>
+                </ui>
+                <div class="w3-center w3-padding-32">
+                    <ul class="pagination w3-center w3-pagination">
+                        <li><a class="w3-black" href="#">1</a></li>
+                        <li><a class="w3-hover-black" href="#">2</a></li>
+                        <li><a class="w3-hover-black" href="#">3</a></li>
+                        <li><a class="w3-hover-black" href="#">4</a></li>
+                        <li><a class="w3-hover-black" href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
+            <script src="http://listjs.com/assets/javascripts/list.min.js"
+                    th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
+            <script th:inline="javascript">
+                var options = {
+                    valueNames: ['id', 'info'],
+                    page: 8,
+                    plugins: [
+                        ListPagination({})
+                    ]
+                };
+                var photosList = new List('photos', options);
+            </script>
 
+
+        </div>
+        <!-- Modal for full size images on click-->
+        <div id="modal01" class="w3-modal w3-black w3-padding-0" onclick="this.style.display='none'">
+            <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image"/>
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <!--scripts for gallery-->
+        <script th:inline="javascript">
+            /*  // Script to open and close sidenav
+             /!*<![CDATA[*!/
+             function w3_open() {
+             document.getElementById("mySidenav").style.display = "block";
+             document.getElementById("myOverlay").style.display = "block";
+             }
+
+             function w3_close() {
+             document.getElementById("mySidenav").style.display = "none";
+             document.getElementById("myOverlay").style.display = "none";
+             }
+             */
+            // Modal Image Gallery
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+                var captionText = document.getElementById("caption");
+                captionText.innerHTML = element.alt;
+            }
             /*]]>*/
         </script>
-        <div class="w3-card-24 w3-margin w3-white">
-            <!--  <img class="img-responsive img-thumbnail center-block" style="width: 356px;height: 241px;" src="#"
-                   th:src="@{'/news/image/'+${maNews.newsId}}" alt="News"/>
-              <div class="w3-container">
-                  <h3 th:text="${maNews.title}"><b>TITLE HEADING</b></h3>
-              </div>
-              <div class="w3-container w3-padding-8">
-                  <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span></h5>
-              </div>
-              <div class="w3-container info-box" id="info-box">
-                  <p th:utext="${maNews.information}">
-                      Information
-                  </p>
-              </div>
-              <div class="w3-container" style="padding-top: 15px;">
-                  <div class="w3-row">
-                      <div class="w3-col m8 s12">
-                          <p>
-                              <button onclick="Red();"
-                                      class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ
-                                  MORE »</b></button>
-                          </p>
-                      </div>
-                      <div class="w3-col m4 w3-hide-small">
-                          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
-                                  class="w3-tag">0</span></span></p>
-                      </div>
-                  </div>
-              </div>
-  -->
-        </div>
-        <!--<hr></hr>-->
+        <!--scripts for slide show!-->
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (n > x.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = x.length
+                }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                x[slideIndex - 1].style.display = "block";
+            }
+            /*]]>*/
+        </script>
     </div>
+    <!--<hr></hr>-->
 </div>
+
 
 </body>
 <footer th:replace="index :: footerok"></footer>

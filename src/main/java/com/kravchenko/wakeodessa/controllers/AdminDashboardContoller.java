@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -115,9 +116,23 @@ public class AdminDashboardContoller {
             byte[] file = multipartFile.getBytes();
             photo.setPicture(file);
         }
-        System.out.println(photo.getInfo());
+
         gs.save(photo);
-        System.out.println(photo.toString());
-        return "admindashboard";
+        return "redirect: localhost:8080/admin/admin-dashboard/gallery/add_new_photos";
+    }
+
+    @RequestMapping(value = "/admin-dashboard/gallery/edit", method = RequestMethod.GET)
+    public String editPhotoGallery(Model uiModel) {
+        List<Photo> photos = gs.findAll();
+        uiModel.addAttribute("photos", photos);
+        return "admindashboard_gallery_edit";
+    }
+
+    @RequestMapping(value = "/admin-dashboard/gallery/edit/image/delete", method = RequestMethod.POST)
+    public String deletePhotoFromGallery(Model uiModel,
+                              @RequestParam(value = "id") Long photoId,
+                              HttpServletRequest req) {
+        gs.delete(photoId);
+        return "redirect:" + req.getContextPath() + "/admin/admin-dashboard/gallery/edit";
     }
 }

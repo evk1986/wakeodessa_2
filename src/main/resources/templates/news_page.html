@@ -26,6 +26,8 @@
             th:src="@{/js/bootstrap.min.js}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
     <style>
         body, h1, h2, h3, h4, h5, h6 {
             font-family: "Raleway", sans-serif
@@ -41,60 +43,73 @@
 
 <!-- Grid -->
 <div class="w3-row">
-    <!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
     <!-- Blog entries -->
-    <div class="w3-col l6 s12" th:each="maNews:*{newses}">
-
-         <script th:inline="javascript">
-             /*<![CDATA[*/
-             var id =
-             /*[[${maNews.newsId}]]*/
-             var currentUrl = location.pathname;
-             function Red() {
-                 location.pathname = currentUrl + '/' + id;
-             }
-
-             /*]]>*/
-         </script>
-        <!-- Blog entry -->
-        <form th:action="@{'news_page/'+${maNews.newsId}}">
-
-        <div class="w3-card-24 w3-margin w3-white">
-            <img class="img-responsive img-thumbnail center-block" style="width: 356px;height: 241px;" src="#"
-                 th:src="@{'/news/image/'+${maNews.newsId}}" alt="News"/>
-            <div class="w3-container">
-                <h3 th:text="${maNews.title}"><b>TITLE HEADING</b></h3>
-            </div>
-            <div class="w3-container w3-padding-8">
-                <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span></h5>
-            </div>
-            <div class="w3-container info-box" id="info-box">
-                <p th:utext="${maNews.information}">
-                    Information
-                </p>
-            </div>
-            <div class="w3-container" style="padding-top: 15px;">
-                <div class="w3-row">
-                    <div class="w3-col m8 s12">
-                        <p>
-                            <!--window.location.href='/news'+-->
-
-                            <button  type="submit"
-                                    class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ
-                                MORE »</b></button>
-                        </p>
+    <!--/*@thymesVar id="newses" type="java.util.List<com.kravchenko.wakeodessa.domains.News>"*/-->
+    <div id="photos">
+        <ui class="list">
+            <div class="w3-col l6 s12" th:each="maNews:*{newses}">
+                <form th:action="@{'/news_page/'+${maNews.newsId}}">
+                    <div class="w3-card-24 w3-margin w3-white">
+                        <img class="img-responsive img-thumbnail center-block" style="width: 356px;height: 241px;"
+                             src="#"
+                             th:src="@{'/news/image/'+${maNews.newsId}}" alt="News"/>
+                        <div class="w3-container">
+                            <h3 th:text="${maNews.title}"><b>TITLE HEADING</b></h3>
+                        </div>
+                        <div class="w3-container w3-padding-8">
+                            <h5>Date <span class="w3-opacity" th:text="${maNews.getCreationDate()}">April 7, 2014</span>
+                            </h5>
+                        </div>
+                        <div class="w3-container info-box" id="info-box">
+                            <p th:utext="${maNews.information}">
+                                Information
+                            </p>
+                        </div>
+                        <div class="w3-container" style="padding-top: 15px;">
+                            <div class="w3-row">
+                                <div class="w3-col m8 s12">
+                                    <p>
+                                        <button type="submit"
+                                                class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
+                                            <b>READ
+                                                MORE »</b></button>
+                                    </p>
+                                </div>
+                                <div class="w3-col m4 w3-hide-small">
+                                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
+                                            class="w3-tag">0</span></span></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w3-col m4 w3-hide-small">
-                        <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span
-                                class="w3-tag">0</span></span></p>
-                    </div>
-                </div>
+                </form>
             </div>
+
+        </ui>
+        <!-- Pagination -->
+        <div class="w3-center w3-padding-32">
+            <ul class="pagination">
+                <li><a class="w3-black" href="#">1</a></li>
+                <li><a class="w3-hover-black" href="#">2</a></li>
+                <li><a class="w3-hover-black" href="#">3</a></li>
+                <li><a class="w3-hover-black" href="#">4</a></li>
+                <li><a class="w3-hover-black" href="#">»</a></li>
+            </ul>
         </div>
-        </form>
-        <!--<hr></hr>-->
     </div>
+    <script src="http://listjs.com/assets/javascripts/list.min.js"
+            th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
+    <script th:inline="javascript">
+        var options = {
+            valueNames: ['newsId', 'title', 'creationDate', 'information', 'button', 'comments'],
+            page: 2,
+            plugins: [
+                ListPagination({})
+            ]
+        };
+        var photosList = new List('photos', options);
+    </script>
 </div>
-<footer th:replace="index :: footerok"></footer>
 </body>
+<footer th:replace="index :: footerok"></footer>
 </html>

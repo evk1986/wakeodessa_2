@@ -21,52 +21,35 @@
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script src="/js/admin.js"
             th:src="@{/js/admin.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+
     <!--Text framework-->
     <script src="/js/tinymce/js/tinymce/tinymce.min.js"
             th:src="@{/js/tinymce/js/tinymce/tinymce.min.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
             th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
     <style>
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Raleway", sans-serif
-        }
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Raleway", sans-serif
+    }
 
-        .w3-quarter img {
-            margin-bottom: -6px;
-            cursor: pointer
-        }
+    .w3-quarter img {
+        margin-bottom: -6px;
+        cursor: pointer
+    }
 
-        .w3-quarter img:hover {
-            opacity: 0.6;
-            transition: 0.3s
-        }
-    </style>
+    .w3-quarter img:hover {
+        opacity: 0.6;
+        transition: 0.3s
+    }
+</style>
 
 </head>
 <body>
 
 <div class="wrap">
-    <nav class="nav-bar navbar-inverse" role="navigation">
-        <div id="top-menu" class="container-fluid active">
-            <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
-            <ul class="nav navbar-nav">
-                <form id="qform" class="navbar-form pull-left" role="search">
-                    <input type="text" class="form-control" placeholder="Search"/>
-                </form>
-                <li class="dropdown movable">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
-                            class="fa fa-4x fa-child"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
-                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <nav class="navbar" th:replace="fragment::userControls"></nav>
     <nav class="navbar" th:replace="fragment::adminNav"></nav>
 
     <!--Body content-->
@@ -77,20 +60,23 @@
         </div>
 
 
-
         <!-- !PAGE CONTENT! -->
         <div class="w3-main w3-content" style="max-width:1600px;margin-top:15px;">
             <!--/*@thymesVar id="photos" type="java.util.List<com.kravchenko.wakeodessa.domains.Photo>"*/-->
             <div class="w3-row w3-grayscale-min">
                 <div id="photos">
+                    <h3 class="w3-center w3-border w3-margin">Edit WOC gallery</h3>
                     <ui class="list">
                         <div class="w3-third" th:each="photo : ${photos}">
-                            <form th:method="post"
+                            <form class="form-horizontal" th:method="post"
                                   th:action="@{'/admin/admin-dashboard/gallery/edit/image/delete?id='+${photo.id}}">
-                                <img src="#" th:src="@{'/gallery/image/' + ${photo.id}}" style="width:100%"
-                                     onclick="onClick(this)"
-                                     alt="#" th:alt="${photo.info}" class="w3-margin w3-padding"/>
-                                <input class="w3-btn w3-hover-red center-block" type="submit" value="delete"/>
+                                <fieldset>
+
+                                    <img src="#" th:src="@{'/gallery/image/' + ${photo.id}}" style="width:100%"
+                                         onclick="onClick(this)"
+                                         alt="#" th:alt="${photo.info}" class="w3-margin w3-padding"/>
+                                    <input class="w3-btn w3-hover-red center-block" type="submit" value="delete"/>
+                                </fieldset>
                             </form>
                         </div>
                     </ui>

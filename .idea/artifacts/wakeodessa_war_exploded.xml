@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="wakeodessa:war exploded">
-    <output-path>$PROJECT_DIR$/target/wakeodessa-0.0.1-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/target/wakeodessa-1.4.1.RELEASE</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -51,8 +51,8 @@
           <element id="library" level="project" name="Maven: com.vaadin:vaadin-spring-boot-starter:1.1.1" />
           <element id="library" level="project" name="Maven: com.vaadin:vaadin-spring-boot:1.1.1" />
           <element id="library" level="project" name="Maven: com.vaadin:vaadin-spring:1.1.1" />
-          <element id="library" level="project" name="Maven: com.vaadin:vaadin-themes:7.7.6" />
-          <element id="library" level="project" name="Maven: com.vaadin:vaadin-client-compiled:7.7.6" />
+          <element id="library" level="project" name="Maven: com.vaadin:vaadin-themes:7.7.3" />
+          <element id="library" level="project" name="Maven: com.vaadin:vaadin-client-compiled:7.7.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
@@ -76,12 +76,16 @@
           <element id="library" level="project" name="Maven: org.webjars:bootstrap:3.2.0" />
           <element id="library" level="project" name="Maven: org.webjars:jquery:3.1.1" />
           <element id="library" level="project" name="Maven: org.vaadin.spring:spring-vaadin:0.0.2.1" />
-          <element id="library" level="project" name="Maven: com.vaadin:vaadin-server:7.7.6" />
-          <element id="library" level="project" name="Maven: com.vaadin:vaadin-sass-compiler:0.9.13" />
+          <element id="library" level="project" name="Maven: com.vaadin:vaadin-server:7.2.6" />
+          <element id="library" level="project" name="Maven: com.vaadin:vaadin-sass-compiler:0.9.6" />
           <element id="library" level="project" name="Maven: org.w3c.css:sac:1.3" />
           <element id="library" level="project" name="Maven: com.vaadin.external.flute:flute:1.3.0.gg2" />
-          <element id="library" level="project" name="Maven: com.vaadin:vaadin-shared:7.7.6" />
-          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.8.3" />
+          <element id="library" level="project" name="Maven: net.sourceforge.cssparser:cssparser:0.9.11" />
+          <element id="library" level="project" name="Maven: com.vaadin:vaadin-shared:7.2.6" />
+          <element id="library" level="project" name="Maven: com.vaadin.external.streamhtmlparser:streamhtmlparser-jsilver:0.0.10.vaadin1" />
+          <element id="library" level="project" name="Maven: com.vaadin.external.google:guava:16.0.1.vaadin1" />
+          <element id="library" level="project" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" />
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.6.3" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-devtools:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.4.1.RELEASE" />
@@ -96,7 +100,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/wakeodessa-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/wakeodessa-1.4.1.RELEASE/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="wakeodessa/web/Web" />
     </root>

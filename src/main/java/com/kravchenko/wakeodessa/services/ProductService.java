@@ -10,9 +10,11 @@ import javax.transaction.Transactional;
 public interface ProductService {
     @Transactional
     Product add(Product product);
+
     @Transactional
     Product find(Integer imageId);
-@Transactional
+
+    @Transactional
     Product save(Product product);
 
     @Transactional

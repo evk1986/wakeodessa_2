@@ -2,9 +2,11 @@ package com.kravchenko.wakeodessa.controllers;
 
 import com.kravchenko.wakeodessa.domains.GenericResponse;
 import com.kravchenko.wakeodessa.domains.Order;
+import com.kravchenko.wakeodessa.domains.Product;
 import com.kravchenko.wakeodessa.domains.User;
 import com.kravchenko.wakeodessa.exceptions.UserNotFoundException;
 import com.kravchenko.wakeodessa.repositories.VerificationTokenRepository;
+import com.kravchenko.wakeodessa.services.OrderContentServiceImpl;
 import com.kravchenko.wakeodessa.services.OrderService;
 import com.kravchenko.wakeodessa.services.UserSecurityService;
 import com.kravchenko.wakeodessa.services.UserService;
@@ -37,6 +39,9 @@ public class UserController {
     OrderService os;
 
     @Autowired
+    OrderContentServiceImpl orderContentService;
+
+    @Autowired
     VerificationTokenRepository passwordTokenRepository;
 
     @Autowired
@@ -57,14 +62,21 @@ public class UserController {
         Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Order> orders;
         if (user instanceof User) {
-            /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();*/
+
             String name = ((User) user).getLogin();
             User currentUser = uds.findByLogin(name);
             System.out.println("CURRENT NAME OF USER! :   " + name);
             model.addAttribute("user", currentUser);
             orders = os.findAllByOrderByUserByLogin(currentUser.getLogin());
             model.addAttribute("orders", orders);
-
+           /* Product p = os.getProductFromOrder(orders.get(0).getOrderId());
+            System.out.println(p);*/
+            /*List<Product> products = null;
+            for (int i = 1; i < orders.size() ; i++) {
+                Product p = os.getProductFromOrder(orders.get(i).getOrderId());
+                products.add(p);
+            }
+            model.addAttribute("products", products);*/
         }
         if (user instanceof org.springframework.security.core.userdetails.User) {
             User currentUser = uds.findByLogin(((org.springframework.security.core.userdetails.User) user).getUsername());
@@ -72,9 +84,26 @@ public class UserController {
             System.out.println("CURRENT NAME OF USER Security User :   " + ((org.springframework.security.core.userdetails.User) user).getUsername());
             orders = os.findAllByOrderByUserByLogin(((org.springframework.security.core.userdetails.User) user).getUsername());
             model.addAttribute("orders", orders);
+            System.out.println(orders);
         }
-
         return "user_profile";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/user_profile/products/price/{ordersId}", method = RequestMethod.GET)
+    public String getProductName(@PathVariable("ordersId") int ordersId){
+        Product p = os.getProductFromOrder(ordersId);
+        System.out.println(p.toString());
+        return p.getPrice();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/user_profile/products/name/{ordersId}", method = RequestMethod.GET)
+    public String getProductname(@PathVariable("ordersId") int ordersId){
+        Product p = os.getProductFromOrder(ordersId);
+        System.out.println(p.toString());
+        return p.getProductName();
+
     }
 
     @RequestMapping(value = "/user/user_profile", method = RequestMethod.POST)

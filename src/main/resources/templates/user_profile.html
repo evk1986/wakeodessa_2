@@ -15,12 +15,14 @@
     <link href="/css/main.css"
           th:href="@{/css/main.css}"
           rel="stylesheet" media="screen"/>
-  <!--  <link href="/css/user.css"
-          th:href="@{/css/user.css}"
-          rel="stylesheet" media="screen"/>-->
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"
+          th:href="@{'http://www.w3schools.com/lib/w3.css'}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"
+            th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js'}"></script>
     <script th:inline="javascript">
-
 
         $(document).ready(function () {
 
@@ -40,34 +42,46 @@
                 $("#hide").hide();
             });
         });
-
     </script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
 
+        .w3-quarter img {
+            margin-bottom: -6px;
+            cursor: pointer
+        }
 
+        .w3-quarter img:hover {
+            opacity: 0.6;
+            transition: 0.3s
+        }
+    </style>
 </head>
 <body>
 <header th:replace="fragment :: header"></header>
 <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
 <div class="container">
-    <div class="row">
-        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <A th:href="@{'/user/user_edit/'+${user.login}}">Edit Profile</A>
-            <A href="/logout" th:href="@{/logout}">Logout</A>
+    <div class="w3-row-padding" style="margin-top: 100px">
+        <div class="col-md-5  toppad  pull-right col-md-offset-3">
+            <A href="#" th:href="@{/logout}">Current time:</A>
             <br/>
             <p class=" text-info" th:text="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"
                th:inline="text"></p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+        <div class="w3-card-24 w3-border w3-margin">
             <div class="panel panel-info">
-                <div class="panel-heading" style="background-color: #2BBCDE;" >
-                    <h3 class="panel-title" style="font-weight: bold; text-transform: capitalize;" th:inline="text" th:text="${user.login}">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="font-weight: bold; text-transform: capitalize;" th:inline="text"
+                        th:text="${user.login}">
                         <!--[[${#httpServletRequest.remoteUser}]]--></h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             <img alt="User Pic"
-                                 src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+                                 src="#" th:src="@{/resource/img/egor.jpg}"
                                  class="img-circle img-responsive"/></div>
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
@@ -109,19 +123,21 @@
                                 </tbody>
                             </table>
                             <!--th:href="@{'/user/user_profile/orders/' + ${user.login}}"-->
-                            <a id="show" class="btn btn-primary ordersList">Show my orders</a>
-                            <a id="hide" class="btn btn-primary">Hide my orders</a>
+                            <a id="show" class="w3-btn w3-hover-purple w3-white w3-border center-block ordersList">Show
+                                my orders</a>
+                            <a id="hide" class="w3-btn w3-hover-red w3-white w3-border center-block">Hide my orders</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"
-                       class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <a href="#" th:href="@{/logout}"
+                       data-original-title="logout" data-toggle="tooltip" type="button"
+                       class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-log-out">Logout</i></a>
                     <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button"
-                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button"
-                               class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            <a href="#" th:href="@{'/user/user_edit/'+${user.login}}"
+                               data-original-title="Edit this user" data-toggle="tooltip" type="button"
+                               class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit">Edit profile</i></a>
+
                         </span>
                 </div>
 
@@ -132,31 +148,54 @@
 
 <!--/*@thymesVar id="orders" type="java.util.List<com.kravchenko.wakeodessa.domains.Order>"*/-->
 <div class="container">
-    <section class="content-inner table-responsive">
-        <table id="maList" align="center" class="table table-condensed table-bordered"
-               th:object="${orders}">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Delivery Adress</th>
-                <th>Product</th>
-                <th>Total price</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr th:each="order : ${orders}">
-                <td th:text="${order.getOrderId()}"></td>
-                <td th:text="${order.getDate()}"></td>
-                <td th:text="${order.getAdress()}"></td>
-                <td th:text="${order.orderProducts}"></td>
-
-
-            </tr>
-            </tbody>
-        </table>
-    </section>
+    <div id="orders">
+        <section id="maList" class="content-inner table-responsive">
+            <table align="center" class="table table-condensed table-bordered"
+                   th:object="${orders}">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Delivery Adress</th>
+                    <th>Product</th>
+                    <th>Total price</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.getOrderId()}"></td>
+                    <td th:text="${order.getDate()}"></td>
+                    <td th:text="${order.getAdress()}"></td>
+                    <td th:text="${order.orderProducts}"></td>
+                    <td th:text="${order.orderProducts}"></td>
+                </tr>
+                </tbody>
+                <ul class="pagination center-block">
+                    <li><a href="#">«</a></li>
+                    <li><a class="active" href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+                <script src="http://listjs.com/assets/javascripts/list.min.js"
+                        th:src="@{'http://listjs.com/assets/javascripts/list.min.js'}"></script>
+                <script th:inline="javascript">
+                    var options = {
+                        valueNames: ['id', 'date', 'adress', 'products', 'price'],
+                        page: 5,
+                        plugins: [
+                            ListPagination({})
+                        ]
+                    };
+                    var orderList = new List('orders', options);
+                </script>
+            </table>
+        </section>
+    </div>
 </div>
 
 </body>

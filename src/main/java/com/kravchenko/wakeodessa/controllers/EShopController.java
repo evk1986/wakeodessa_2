@@ -6,6 +6,8 @@ import com.kravchenko.wakeodessa.domains.Product;
 import com.kravchenko.wakeodessa.domains.User;
 import com.kravchenko.wakeodessa.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ import java.util.List;
 @RequestMapping(value = "/shop")
 public class EShopController {
 
+    @Autowired
+    private JavaMailSender mailSender;
     @Autowired
     ProductService productService;
     @Autowired
@@ -129,6 +133,7 @@ public class EShopController {
         System.out.println(currentUser.toString());
         OrderContent oc = new OrderContent();
         Product currentProd = productService.find(productId);
+        System.out.println("купленій продукт" + currentProd.toString());
         oc.setProduct(currentProd);
         oc.setOrderId(order);
         List<OrderContent> loc = new ArrayList<OrderContent>();
@@ -147,9 +152,22 @@ public class EShopController {
         uds.save(currentUser);
         orderService.save(order);
         orderContentService.save(oc);
+        /*Send message after user buying products*/
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setSubject("You have new order");
+        String messageBody =
+                         "User:    " + currentUser.getLogin() + "\n" +
+                        "Product:   " + oc.getProduct().getProductName() + "\n" +
+                        "Order #:   " + order.getOrderId() + "\n" +
+                        "e-mail:    " + currentUser.getEmail() + "\n" +
+                        "mobile:    " + currentUser.getTelNumber();
+        email.setText(messageBody);
+        email.setTo("evksst@gmail.com");
+        email.setFrom("syntetich@gmail.com");
+        mailSender.send(email);
+        /*///////////////////////////////////////////*/
         System.out.println(order.toString());
         return "succes_form";
     }
-
 
 }

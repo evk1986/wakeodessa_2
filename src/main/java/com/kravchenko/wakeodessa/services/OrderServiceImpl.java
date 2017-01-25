@@ -1,8 +1,11 @@
 package com.kravchenko.wakeodessa.services;
 
+import com.kravchenko.wakeodessa.domains.Order;
+import com.kravchenko.wakeodessa.domains.OrderContent;
+import com.kravchenko.wakeodessa.domains.Product;
+import com.kravchenko.wakeodessa.repositories.OrderContentRepository;
 import com.kravchenko.wakeodessa.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.kravchenko.wakeodessa.domains.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +18,22 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    OrderContentRepository orderContentRepository;
 
 
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public Product getProductFromOrder(int orderId) {
+        Order order = orderRepository.findOne(orderId);
+        OrderContent orderContent = orderContentRepository.findAllByOrderId(order);
+        System.out.println(order.getOrderId());
+        System.out.println(orderContent.getProduct());
+        return orderContent.getProduct();
     }
 
     @Override

@@ -34,24 +34,18 @@
             font-family: "Raleway", sans-serif
         }
     </style>
-    <!--<script src="/static/js/jquery-3.1.1.min.js"
-            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <script src="/js/admin.js"
-            th:src="@{/js/admin.js}"></script>-->
-
 </head>
 <body>
 <header th:replace="fragment :: header"></header>
-<div class="container">
-    <div class="row">
+<div class="w3-main">
+    <div class="w3-row-padding w3-center">
         <!--/*@thymesVar id="order" type="com.kravchenko.wakeodessa.domains.Order"*/-->
         <!--/*@thymesVar id="user" type="com.kravchenko.wakeodessa.domains.User"*/-->
         <!--/*@thymesVar id="productId" type="java.lang.Integer"*/-->
-        <form class="form-horizontal"
+        <form class="form-horizontal w3-margin"
               th:method="post"
               th:action="@{'/shop/main/'+ ${user.getId()} + '/order/'+${productId}+'/succes'}"
-              th:object="${user}"
-        >
+              th:object="${user}">
             <fieldset>
                 <!-- Form Name -->
                 <legend>Order</legend>
@@ -83,18 +77,18 @@
                 <!-- Button -->
                 <div class="form-group">
                     <!--  <label class="col-md-4 control-label" for="singlebuttonsubmit"></label>-->
-                    <div class="col-md-4">
-                        <button id="singlebuttonsubmit" name="singlebuttonsubmit" class="btn btn-primary mybtn"
-                                type="submit">Buy
-                        </button>
-                        <a th:href="@{'/shop/main/product/' + ${productId}}">
-                            <button type="button" class="btn btn-danger mybtn"
-                            >Cancel
-                            </button>
-                        </a>
 
-                    </div>
+                    <button class="w3-btn w3-hover-green w3-round-large "
+                            type="submit">Buy
+                    </button>
+                    <a th:href="@{'/shop/main/product/' + ${productId}}">
+                        <button type="button" class="w3-btn w3-hover-red w3-round-large">Cancel
+                        </button>
+                    </a>
+
+
                 </div>
+
 
             </fieldset>
         </form>

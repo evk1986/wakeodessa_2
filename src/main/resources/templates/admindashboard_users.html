@@ -14,31 +14,31 @@
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
     <script src="/js/admin.js"
             th:src="@{/js/admin.js}"></script>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"
+          th:href="@{'https://fonts.googleapis.com/css?family=Raleway'}"/>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        .w3-quarter img {
+            margin-bottom: -6px;
+            cursor: pointer
+        }
+
+        .w3-quarter img:hover {
+            opacity: 0.6;
+            transition: 0.3s
+        }
+    </style>
+
     <!--/*@thymesVar id="users" type="java.util.List<com.kravchenko.wakeodessa.domains.User>"*/-->
 </head>
 <body>
 <div class="wrap">
-    <nav class="nav-bar navbar-inverse" role="navigation">
-        <div id="top-menu" class="container-fluid active">
-            <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
-            <ul class="nav navbar-nav">
-                <form id="qform" class="navbar-form pull-left" role="search">
-                    <input type="text" class="form-control" placeholder="Search"/>
-                </form>
-                <li class="dropdown movable">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
-                            class="fa fa-4x fa-child"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
-                        <li><a href="#"><span class="fa fa-gear"></span>Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="fa fa-power-off"></span>Logout</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <nav class="navbar" th:replace="fragment::userControls"></nav>
     <nav class="navbar" th:replace="fragment::adminNav"></nav>
 
     <!--Body content-->

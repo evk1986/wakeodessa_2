@@ -21,8 +21,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public Product find(Integer imageId) {
-        return repository.findOne(imageId);
+    public Product find(Integer productId) {
+        return repository.findOne(productId);
     }
 
     @Override

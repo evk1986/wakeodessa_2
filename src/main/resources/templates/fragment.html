@@ -19,9 +19,9 @@
         <li class="nav-header">
             <div class="link"><i class="fa fa-lg fa-globe"></i>Shop<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
-                <li><a href="#" th:href="@{'/admin/addbrand'}">Brands</a></li>
-                <li><a href="#" th:href="@{'/admin/addProduct'}">Products</a></li>
-                <li><a href="/admin/admin-dashboard/orders">Orders</a></li>
+                <li><a href="#" th:href="@{/admin/addbrand}">Brands</a></li>
+                <li><a href="#" th:href="@{/admin/addProduct}">Products</a></li>
+                <li><a href="/admin/admin-dashboard/orders" th:href="@{/admin/admin-dashboard/orders}">Orders</a></li>
 
 
             </ul>
@@ -29,23 +29,25 @@
         <li class="nav-header">
             <div class="link"><i class="fa fa-lg fa-globe"></i>News<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
-                <li><a href="#" th:href="@{'/admin/admin-dashboard/news'}">Add</a></li>
-                <li><a href="#" th:href="@{'/admin/admin-dashboard/news/edit'}">Edit</a></li>
+                <li><a href="#" th:href="@{/admin/admin-dashboard/news}">Add</a></li>
+                <li><a href="#" th:href="@{/admin/admin-dashboard/news/edit}">Edit</a></li>
             </ul>
         </li>
         <li class="nav-header">
             <div class="link"><i class="fa fa-lg fa-users"></i>Users<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
-                <li><a href="/admin/admin-dashboard/users">Users</a></li>
-                <li><a href="/registration">New User</a></li>
+                <li><a href="/admin/admin-dashboard/users" th:href="@{/admin/admin-dashboard/users}">Users</a></li>
+                <li><a href="/registration" th:href="@{/registration}">New User</a></li>
             </ul>
         </li>
         <li class="nav-header">
             <div class="link" id="gallery" type="active"><i class="fa fa-lg fa-users"></i>Gallery<i
                     class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
-                <li><a href="/admin/admin-dashboard/gallery/add_new_photos">Add new photo</a></li>
-                <li id="edit" type="active"><a href="/admin/admin-dashboard/gallery/edit">Edit gallery</a></li>
+                <li><a href="/admin/admin-dashboard/gallery/add_new_photos"
+                       th:href="@{/admin/admin-dashboard/gallery/add_new_photos}">Add new photo</a></li>
+                <li id="edit" type="active"><a href="/admin/admin-dashboard/gallery/edit"
+                                               th:href="@{/admin/admin-dashboard/gallery/edit}">Edit gallery</a></li>
             </ul>
         </li>
 
@@ -62,7 +64,23 @@
 
     </ul>
 </aside>
+<nav th:fragment="userControls" class="nav-bar navbar-inverse" role="navigation">
+    <div id="top-menu" class="container-fluid active">
+        <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
+        <ul class="nav navbar-nav">
+            <li class="dropdown movable">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
+                        class="fa fa-4x fa-child">Controls</span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" th:href="@{/user/user_profile}"><span class="fa fa-user"></span>My Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" th:href="@{/logout}"><span class="fa fa-power-off"></span>Logout</a></li>
+                </ul>
+            </li>
 
+        </ul>
+    </div>
+</nav>
 <div th:fragment="header" class="header">
     <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;" role="navigation">
         <div class="container-fluid">
@@ -87,16 +105,16 @@
                     </li>
                     <li class="active"><a href="/gallery" th:href="@{/gallery}">Gallery</a></li>
                     <li class="active">
-                        <a href="/shop/main">Brand Shop</a>
+                        <a href="#" th:href="@{/shop/main}">Brand Shop</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="hasRole('ROLE_ADMIN')" id="adminka">
-                        <a href="/admin/admin-dashboard" method="post"><span
+                        <a href="/admin/admin-dashboard" th:href="@{/admin/admin-dashboard}" method="post"><span
                                 class="glyphicon glyphicon-wrench"></span>Administration dashboard</a>
                     </li>
                     <li sec:authorize="isAnonymous()">
-                        <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        <a href="/login" th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
                         <a th:href="@{/user/user_profile}" href="#">

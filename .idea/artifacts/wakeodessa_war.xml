@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="wakeodessa:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="wakeodessa-0.0.1-SNAPSHOT.war">
+    <root id="archive" name="wakeodessa-1.4.1.RELEASE.war">
       <element id="artifact" artifact-name="wakeodessa:war exploded" />
     </root>
   </artifact>

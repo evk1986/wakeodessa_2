@@ -32,60 +32,20 @@
             font-family: "Raleway", sans-serif
         }
     </style>
-
-
-    <!-- <link href="/static/css/bootstrap.min.css"
-           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
-           rel="stylesheet" media="screen"/>-->
     <link th:href="@{/css/shop-item.css}"
           href="/css/shop-item.css"
           rel="stylesheet" media="screen"/>
-    <!--   <script src="/static/js/jquery-3.1.1.min.js"
-               th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>-->
-    <!--  <script src="/js/admin.js"
-              th:src="@{/js/admin.js}"></script>-->
+
 
     <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 </head>
 
-<body>
+<body style="margin: 0px;">
 <header th:replace="fragment :: header"></header>
-<!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">WOC HOME</a>
-        </div>
-        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-        &lt;!&ndash; /.navbar-collapse &ndash;&gt;
-    </div>
-    &lt;!&ndash; /.container &ndash;&gt;
-</nav>-->
-<!-- Page Content -->
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
-<div class="container" th:object="${product}">
-
-    <div class="row">
-
-        <div class="col-md-3" th:replace="main :: categories">
-        </div>
+<div class="container w3-main" th:object="${product}">
+    <div class="w3-row-padding">
+        <div class="col-md-3" th:replace="main :: categories"></div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{'http://localhost:8080/shop/main/'}">Home</a></li>
             <li class="breadcrumb-item active" th:text="${product.getProductName()}"></li>
@@ -94,7 +54,8 @@
         <div class="col-md-9">
             <div class="thumbnail">
                 <div class="col-sm-7 col-lg-7 col-md-7">
-                    <img class="thumbnail" th:src="@{'/shop/main/get_product_image/image/'+${product.getProduct_id()}}"
+                    <img class="thumbnail w3-card-24 w3-border "
+                         th:src="@{'/shop/main/get_product_image/image/'+${product.getProduct_id()}}"
                          alt=""/>
                 </div>
                 <div class="caption-full">
@@ -105,16 +66,16 @@
                               th:action="@{'/shop/main/'+${user.getId()}+ '/order?productId=' + ${product.getProduct_id()}}"
                               method="post" th:method="post">
 
-                            <button class="btn btn-success btn-lg btn-add-to-card pull-right"><span
+                            <button class="w3-btn w3-hover-green btn-add-to-card w3-round-large w3-large pull-right"><span
                                     class="glyphicon glyphicon-shopping-cart">   Buy</span>
                             </button>
                         </form>
                     </th:block>
                     <th:block sec:authorize="!isAuthenticated()">
-                        <p><em>To continue shopping - login please! <smile>:-)</smile></em></p>
+                        <p><em>To continue shopping - login please!
+                            <smile>:-)</smile>
+                        </em></p>
                     </th:block>
-
-
                     <h4 th:text="'Model: ' + ${product.getProductName()}"
                         style="color:#2aabd2;  font-weight: bold;"></h4>
                     <h4 th:class="center-block" style="font-style: italic; color: #2aabd2"

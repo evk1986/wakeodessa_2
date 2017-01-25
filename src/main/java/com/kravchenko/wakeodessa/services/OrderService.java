@@ -1,6 +1,7 @@
 package com.kravchenko.wakeodessa.services;
 
 import com.kravchenko.wakeodessa.domains.Order;
+import com.kravchenko.wakeodessa.domains.Product;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface OrderService {
 
 
     List<Order> findAllByOrderByUserByLogin(String login);
+
+    Product getProductFromOrder(int orderId);
 }

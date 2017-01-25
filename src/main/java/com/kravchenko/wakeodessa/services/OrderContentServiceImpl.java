@@ -1,5 +1,6 @@
 package com.kravchenko.wakeodessa.services;
 
+import com.kravchenko.wakeodessa.domains.Order;
 import com.kravchenko.wakeodessa.domains.OrderContent;
 import com.kravchenko.wakeodessa.repositories.OrderContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class OrderContentServiceImpl {
     @Transactional
     public void save(OrderContent oc){
         rep.save(oc);
+    }
+
+    public OrderContent findAllByOrderId(Order order) {
+        return rep.findAllByOrderId(order);
     }
 
 }

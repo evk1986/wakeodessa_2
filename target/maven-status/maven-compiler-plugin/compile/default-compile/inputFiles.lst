@@ -11,8 +11,10 @@ C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\Brands.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\Categori.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\UserService.java
+C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\GalleryServiceImpl.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\config\ThymeleafConfig.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\NewsServiceImpl.java
+C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\GalleryService.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\GenericResponse.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\OrderService.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\repositories\OrderContentRepository.java
@@ -21,6 +23,7 @@ C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\controllers\ProductController.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\Order.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\repositories\StorageRepository.java
+C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\controllers\GalleryController.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\PasswordUtilValidation.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\UserServiceImpl.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\ISecurityService.java
@@ -41,9 +44,11 @@ C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\News.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\controllers\NavigateController.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\controllers\NewsController.java
+C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\Photo.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\StorageService.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\config\SecurityConfig.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\controllers\AdminDashboardContoller.java
+C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\repositories\GalleryRepository.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\services\OrderContentServiceImpl.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\config\SecurityInit.java
 C:\Users\Egor\IdeaProjects\wakeodessa_2\src\main\java\com\kravchenko\wakeodessa\domains\Brand.java

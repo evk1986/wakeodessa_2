@@ -52,11 +52,6 @@ public class OrderContent implements Serializable {
 
     @Override
     public String toString() {
-        return product.getProductName();
-       /* return "OrderContent{" +
-                "id=" + id +
-                ", orderId=" + orderId.getOrderId() +
-                ", product=" + product.getProductName() +
-                '}';*/
+        return product.toString();
     }
 }

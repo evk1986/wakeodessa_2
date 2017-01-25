@@ -9,13 +9,16 @@
           rel="stylesheet" media="screen"/>
     <script src="/static/js/jquery-3.1.1.min.js"
             th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-    <header th:replace="fragment :: header"></header>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+
+
 </head>
 <body>
-
+<header th:replace="fragment :: header"></header>
 <!--/*@thymesVar id="token" type="com.kravchenko.wakeodessa.domains.Brand"*/-->
 <!--/*@thymesVar id="currentBrand" type="com.kravchenko.wakeodessa.domains.Brand"*/-->
-
+<nav class="navbar" th:replace="fragment::userControls"></nav>
 <form class="form-horizontal" th:object="${currentBrand}"
       th:action="@{'/admin/addbrand/edit/' + ${currentBrand.getBrand_id()}}" enctype="multipart/form-data"
       method="post">

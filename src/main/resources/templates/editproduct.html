@@ -12,9 +12,14 @@
     <link href="/css/main.css"
           th:href="@{/css/main.css}"
           rel="stylesheet" media="screen"/>
-    <header th:replace="fragment :: header"></header>
+    <script src="webjars/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+
+
 </head>
 <body>
+<nav class="navbar" th:replace="fragment::userControls"></nav>
+<header th:replace="fragment :: header"></header>
 <!--/*@thymesVar id="product" type="com.kravchenko.wakeodessa.domains.Product"*/-->
 <!--/*@thymesVar id="brands" type="com.kravchenko.wakeodessa.domains.Brands"*/-->
 <form class="form-horizontal" th:object="${product}" th:action="@{'/admin/addProduct/edit/'+${product.getProduct_id()}}"

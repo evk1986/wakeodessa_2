@@ -39,13 +39,11 @@
     </style>
 </head>
 
-<body>
+<body class="w3-margin">
 <header th:replace="fragment :: header"></header>
-
 <div class="container">
-
-    <div class="row">
-        <div class="col-md-3" id="categories" th:fragment="categories">
+    <div class="w3-row-padding">
+        <div style="font-size: 15px;" class="col-md-3" id="categories" th:fragment="categories">
             <p class="lead">WOC BOARD-SHOP</p>
             <div class="list-group">
                 <a href="" th:href="@{'/shop/main/'+${categories.getDisplayedName().toLowerCase()}}"
@@ -56,8 +54,8 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="row carousel-holder" id="carousel">
-                <div class="col-md-12">
+            <div class="w3-row-padding carousel-holder w3-center" id="carousel">
+                <div class="col-md-12" style="max-height: 300px; max-width: 820px;">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -65,14 +63,18 @@
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt=""/>
+                            <div class="item active" style="max-width: 800px; max-height: 300px;">
+                                <img class="slide-image" src="#"
+                                     th:src="@{/resource/img/slide_1.jpg}"
+                                     alt=""/>
                             </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt=""/>
+                            <div class="item" style="max-width: 800px; max-height: 300px;">
+                                <img class="slide-image" src="#" alt=""
+                                     th:src="@{/resource/img/slide_2.jpg}"/>
                             </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt=""/>
+                            <div class="item" style="max-width: 800px; max-height: 300px;">
+                                <img class="slide-image" src="#"
+                                     th:src="@{/resource/img/slide_3.jpg}" alt=""/>
                             </div>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -84,13 +86,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-
+            <div class="w3-row-padding">
                 <!--/*@thymesVar id="products" type="java.util.List<com.kravchenko.wakeodessa.domains.Product>"*/-->
                 <div class="col-sm-4 col-lg-4 col-md-4" th:if="${products.size()==0}">
                     <h4 style="align-content: center"> No products available </h4>
                 </div>
-                <div class="col-sm-4 col-lg-4 col-md-4"
+                <div class="w3-third"
                      th:each="product : ${products}"
                      id="products">
                     <div class="thumbnail">
@@ -101,7 +102,6 @@
                         <h4><a th:href="@{'/shop/main/product/'+${product.getProduct_id()}}"
                                th:text="${product.getProductName()}"></a>
                         </h4>
-
                         <p style="text-overflow:ellipsis;
                                 white-space: pre-wrap;
                                 overflow: hidden;"
@@ -125,6 +125,7 @@
         </div>
     </div>
 </div>
-<footer th:replace="index :: footerok"></footer>
+
 </body>
+<footer th:replace="index :: footerok"></footer>
 </html>

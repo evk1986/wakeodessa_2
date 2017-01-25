@@ -1,7 +1,6 @@
 package com.kravchenko.wakeodessa.domains;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -121,7 +120,7 @@ public class Product {
                 ", productName='" + productName + '\'' +
                 ", category=" + category +
                 ", brand=" + brand +
-                ", image=" + Arrays.toString(image) +
+                /*", image=" + Arrays.toString(image)*/ +
                 '}';
     }
 

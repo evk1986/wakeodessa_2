@@ -118,7 +118,7 @@ public class AdminDashboardContoller {
         }
 
         gs.save(photo);
-        return "redirect: localhost:8080/admin/admin-dashboard/gallery/add_new_photos";
+        return "redirect: localhost:8080/admin/admin-dashboard/gallery/";
     }
 
     @RequestMapping(value = "/admin-dashboard/gallery/edit", method = RequestMethod.GET)

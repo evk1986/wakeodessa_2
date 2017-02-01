@@ -87,9 +87,9 @@
                         <td th:text="${order.getDate()}"></td>
                         <td th:text="${order.getUser().login}"></td>
                         <td th:text="${order.getAdress()}"></td>
-                        <td th:text="${order.orderProducts}"></td>
+                        <td th:text="${order.getProductName()}"></td>
                         <td th:text="${order.getMobile()}"></td>
-                        <td th:text="${order.getMobile()}"></td>
+                        <td th:text="${order.getPrice()}"></td>
                     </tr>
                     </tbody>
                     <ul class="pagination center-block">

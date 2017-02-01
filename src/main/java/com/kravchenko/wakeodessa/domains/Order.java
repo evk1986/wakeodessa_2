@@ -11,6 +11,10 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
+
+    public Order() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
@@ -25,6 +29,25 @@ public class Order implements Serializable {
     @JoinColumn(name = "login")
     private User user;
 
+    @Column
+    private String mobile;
+    @Column
+    private String adress;
+    @Column
+    private String token;
+
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -38,13 +61,6 @@ public class Order implements Serializable {
                 '}';
     }
 
-    @Column
-    private String mobile;
-
-    @Column
-    private String adress;
-
-    private String token;
 
     public List<OrderContent> getOrderProducts() {
         return orderProducts;
@@ -68,10 +84,6 @@ public class Order implements Serializable {
 
     public void setAdress(String adress) {
         this.adress = adress;
-    }
-
-
-    public Order() {
     }
 
 
@@ -99,19 +111,19 @@ public class Order implements Serializable {
         this.date = date;
     }
 
-    /*public List<Product> getOrderProducts() {
-        return orderProducts;
-    }
 
-    public void setOrderProducts(List<Product> orderProducts) {
-        this.orderProducts = orderProducts;
-    }
-*/
     public String getToken() {
         return token;
     }
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getProductName() {
+        return this.getProduct().getProductName();
+            }
+    public String getPrice() {
+        return this.getProduct().getPrice();
     }
 }

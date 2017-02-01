@@ -15,6 +15,8 @@
           th:href="@{/css/login.css}"
           rel="stylesheet" media="screen"/>
     <header th:replace="fragment :: header"></header>
+
+
 </head>
 <body>
 <div class="container">
@@ -45,7 +47,7 @@
 
                         <div class="form-group">
                             <input type="email" name="email" id="email" class="form-control input-sm"
-                                   placeholder="Email Address" th:field="*{email}"/>
+                                   placeholder="Email Address" required="required" th:field="*{email}"/>
                         </div>
 
                         <div class="row">
@@ -64,6 +66,7 @@
                                            th:field="*{confPassword}"/>
                                 </div>
                             </div>
+
                         </div>
                         <input type="submit" value="Register" class="btn btn-info btn-block mybtn"/>
 
@@ -71,6 +74,7 @@
                 </div>
             </div>
         </div>
+        <div id="validEmail"></div>
     </div>
 </div>
 

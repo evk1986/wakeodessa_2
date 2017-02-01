@@ -14,7 +14,7 @@
             th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<aside th:fragment="adminNav" id="side-menu" class="aside" role="navigation">
+<aside th:fragment="adminNav" id="side-menu" class="aside nav" role="navigation" style="background-color: black;">
     <ul class="nav nav-list accordion">
         <li class="nav-header">
             <div class="link"><i class="fa fa-lg fa-globe"></i>Shop<i class="fa fa-chevron-down"></i></div>
@@ -51,7 +51,7 @@
             </ul>
         </li>
 
-        <li class="nav-header">
+       <!-- <li class="nav-header">
             <div class="link"><i class="fa fa-lg fa-file-image-o"></i>Reports<i class="fa fa-chevron-down"></i>
             </div>
             <ul class="submenu">
@@ -60,18 +60,18 @@
                 <li><a href="#">Pingbacks</a></li>
                 <li><a href="#">Tags</a></li>
             </ul>
-        </li>
+        </li>-->
 
     </ul>
 </aside>
-<nav th:fragment="userControls" class="nav-bar navbar-inverse" role="navigation">
+<nav th:fragment="userControls" class="nav-bar navbar-inverse" role="navigation" style="background: black;">
     <div id="top-menu" class="container-fluid active">
         <a class="navbar-brand" th:href="@{/}" href="#">Wake Odessa Crew</a>
         <ul class="nav navbar-nav">
             <li class="dropdown movable">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span
                         class="fa fa-4x fa-child">Controls</span></a>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu" style="background: black;">
                     <li><a href="#" th:href="@{/user/user_profile}"><span class="fa fa-user"></span>My Profile</a></li>
                     <li class="divider"></li>
                     <li><a href="#" th:href="@{/logout}"><span class="fa fa-power-off"></span>Logout</a></li>
@@ -82,7 +82,7 @@
     </div>
 </nav>
 <div th:fragment="header" class="header">
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px; background: black;" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span
@@ -95,14 +95,14 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/news_page">News</a></li>
                     <li class="active"><a href="/">Team</a></li>
-                    <li class="dropdown">
+                  <!--  <li class="dropdown">
                         <a style="color: white;" class="dropdown-toggle" data-toggle="dropdown" href="#">Wake spots
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color:white; opacity:0.5">
                             <li><a href="#" th:href="@{'\\chernomorskiy.com.ua'}" style="font-weight:600;">CWP</a></li>
                             <li><a href="#" style="font-weight:600;">YWP</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="active"><a href="/gallery" th:href="@{/gallery}">Gallery</a></li>
                     <li class="active">
                         <a href="#" th:href="@{/shop/main}">Brand Shop</a>

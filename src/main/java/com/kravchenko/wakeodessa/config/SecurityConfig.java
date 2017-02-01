@@ -22,7 +22,6 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     UserService service;
 
@@ -51,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**", "/shop/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/shop/**").permitAll()/*access("hasRole('ROLE_USER')")*/
+                .antMatchers("/shop/**").permitAll()
                 .antMatchers("/resources/**", "/**").permitAll()
                 .antMatchers("/static/**", "/**").permitAll()
                 .antMatchers("/registration", "/").permitAll()

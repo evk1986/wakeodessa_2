@@ -146,6 +146,7 @@ public class EShopController {
         order.setOrderProducts(loc);
         order.setUser(currentUser);
         order.setDate(date);
+        order.setProduct(currentProd);
         order.setMobile(currentUser.getTelNumber());
         order.setAdress(currentUser.getHomeAdress());
         System.out.println(order.toString());
@@ -166,7 +167,7 @@ public class EShopController {
         email.setFrom("syntetich@gmail.com");
         mailSender.send(email);
         /*///////////////////////////////////////////*/
-        System.out.println(order.toString());
+      //  System.out.println(order.toString());
         return "succes_form";
     }
 

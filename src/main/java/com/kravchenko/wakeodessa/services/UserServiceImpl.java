@@ -42,9 +42,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public User save(User user) {
-        if (user.getPassword() == null) {
+        if ( !user.getPassword().startsWith("$")) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
+
         userRepository.save(user);
         return user;
     }

@@ -31,7 +31,7 @@ public class NavigateController {
     public String registrationUser(@ModelAttribute(value = "user") User user) {
         user.setRole(Role.USER.getName());
         userService.save(user);
-        return "redirect:index.html";
+        return "index";
     }
 
     @RequestMapping("/")
@@ -44,23 +44,3 @@ public class NavigateController {
         return "login";
     }
 }
-
-   /* @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getMainView() {
-        ModelAndView mv = new ModelAndView();
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth.isAuthenticated());
-        if (auth.isAuthenticated()) {
-
-            String name = auth.getName(); //get logged in username
-            System.out.println(name);
-            User user = userService.findByLogin(name);
-            mv.setViewName("");
-            mv.addObject(user);
-
-        }
-        return mv;
-
-    }*/

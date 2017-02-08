@@ -122,7 +122,8 @@ public class Order implements Serializable {
 
     public String getProductName() {
         return this.getProduct().getProductName();
-            }
+    }
+
     public String getPrice() {
         return this.getProduct().getPrice();
     }

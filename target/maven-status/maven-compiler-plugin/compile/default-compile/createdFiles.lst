@@ -40,6 +40,7 @@ com\kravchenko\wakeodessa\repositories\BrandRepository.class
 com\kravchenko\wakeodessa\services\BrandService.class
 com\kravchenko\wakeodessa\services\ProductService.class
 com\kravchenko\wakeodessa\domains\PasswordUtilValidation.class
+com\kravchenko\wakeodessa\controllers\VideoController.class
 com\kravchenko\wakeodessa\domains\Brands.class
 com\kravchenko\wakeodessa\controllers\UserController.class
 com\kravchenko\wakeodessa\controllers\GalleryController.class
